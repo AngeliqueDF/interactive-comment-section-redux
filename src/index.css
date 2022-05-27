@@ -198,3 +198,20 @@ main {
 	border-radius: 6px;
 }
 
+textarea::placeholder,
+textarea {
+	font-family: "Rubik";
+	color: var(--grayish-blue);
+}
+
+.new-comment textarea,
+.new-reply textarea {
+	grid-row: 1 / span 1;
+	grid-column: 1 / span 2;
+	margin-bottom: 1rem;
+	border-radius: 6px;
+	padding: 1rem;
+	min-height: 4rem;
+	border: 1px solid var(--light-grayish-blue);
+}
+
