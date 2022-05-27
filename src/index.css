@@ -125,4 +125,35 @@ main {
 }
 /* END COMMENT CONTENT */
 
+/* COMMENT CONTROLS */
+.comment-control {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.comment-control button {
+	color: var(--moderate-blue);
+	font-weight: 700;
+}
+.comment-control .delete-button,
+.comment-control .edit-button,
+.comment-control .reply-button {
+	padding: 0.25rem 0.25rem 0.25rem 1.1rem;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 0.7rem 0.7rem;
+}
+.comment-control .reply-button {
+	background-image: url("./images/icon-reply.svg");
+}
+.comment-control .delete-button {
+	color: var(--soft-red);
+	background-image: url("./images/icon-delete.svg");
+}
+.comment-control .edit-button {
+	background-image: url("./images/icon-edit.svg");
+	margin-inline-start: 0.5rem;
+}
+/* END COMMENT CONTROLS */
+
 /* END COMMENT */
