@@ -262,3 +262,10 @@ textarea {
 		width: 49%;
 	}
 
+	/* COMMENT */
+	.comment {
+		grid-template-columns: 3.5rem 1fr 1fr;
+		grid-template-rows: 3rem 1fr;
+	}
+
+	/* END COMMENT */
