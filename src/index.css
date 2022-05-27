@@ -288,4 +288,11 @@ textarea {
 	}
 	/* END COMMENT META */
 
+	/* COMMENT CONTENT */
+	.comment-content {
+		grid-row-start: 2;
+		grid-column-start: 2;
+	}
+	/* END COMMENT CONTENT */
+
 	/* END COMMENT */
