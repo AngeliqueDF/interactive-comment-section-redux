@@ -268,4 +268,15 @@ textarea {
 		grid-template-rows: 3rem 1fr;
 	}
 
+	/* SCORE BUTTONS */
+	.score-buttons {
+		grid-row-start: 1;
+		grid-column-start: 1;
+		flex-direction: column;
+
+		width: 2.5rem;
+		height: 6rem;
+	}
+	/* END SCORE BUTTONS */
+
 	/* END COMMENT */
