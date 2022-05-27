@@ -114,4 +114,15 @@ main {
 }
 /* END COMMENT META */
 
+/* COMMENT CONTENT */
+.comment-content {
+	margin-block-end: 1rem;
+	line-height: 1.4rem;
+}
+.replying-to {
+	color: var(--moderate-blue);
+	font-weight: bold;
+}
+/* END COMMENT CONTENT */
+
 /* END COMMENT */
