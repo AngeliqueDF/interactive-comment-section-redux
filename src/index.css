@@ -243,3 +243,18 @@ textarea {
 	color: hsl(228, 45%, 44%);
 }
 
+@media screen and (min-width: 1440px) {
+	button:hover,
+	input[type="submit"]:hover {
+		cursor: pointer;
+	}
+	button:active,
+	input[type="submit"]:active {
+		opacity: 50%;
+	}
+
+	.score-buttons button:active {
+		color: var(--moderate-blue);
+		opacity: 100%;
+	}
+
