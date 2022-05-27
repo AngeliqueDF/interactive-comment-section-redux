@@ -321,3 +321,9 @@ textarea {
 		column-gap: 1rem;
 	}
 
+	.new-comment img,
+	.new-reply img {
+		grid-row-start: 1;
+		grid-column-start: 1;
+	}
+
