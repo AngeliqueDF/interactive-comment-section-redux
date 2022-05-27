@@ -65,4 +65,26 @@ main {
 	grid-column: 1 / span 2;
 }
 
+/* SCORE BUTTONS COMPONENT */
+.score-buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	grid-column: 1 / span 1;
+	grid-row: 3;
+	width: 5rem;
+	border-radius: 9px;
+	color: var(--moderate-blue);
+	background-color: var(--light-gray);
+}
+.score-buttons button {
+	color: var(--light-grayish-blue);
+	font-size: 1rem;
+	padding: 0.75rem;
+}
+.score-buttons span {
+	font-weight: bold;
+}
+/* END SCORE BUTTONS COMPONENT */
+
 /* END COMMENT */
