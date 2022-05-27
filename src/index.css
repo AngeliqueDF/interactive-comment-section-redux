@@ -221,3 +221,16 @@ textarea {
 	margin: 0 auto;
 }
 
+#add-new-comment,
+#update,
+.new-reply button {
+	background-color: var(--moderate-blue);
+	color: white;
+	border-radius: 9px;
+	text-transform: uppercase;
+	width: 6rem;
+	height: 3rem;
+	margin-inline-start: auto;
+	margin: auto 0 auto auto;
+}
+/* END NEW REPLY/COMMENT */
