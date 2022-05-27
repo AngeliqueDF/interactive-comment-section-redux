@@ -327,3 +327,10 @@ textarea {
 		grid-column-start: 1;
 	}
 
+	.new-comment textarea,
+	.new-reply textarea {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 1 / span 2;
+	}
+
