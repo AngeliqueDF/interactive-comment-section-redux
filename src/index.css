@@ -334,3 +334,10 @@ textarea {
 		grid-row-start: 1 / span 2;
 	}
 
+	#add-new-comment,
+	.new-reply button {
+		grid-column-start: 3;
+		grid-row-start: 1;
+		margin-inline-start: auto;
+	}
+
