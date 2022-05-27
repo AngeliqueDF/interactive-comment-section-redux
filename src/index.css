@@ -279,4 +279,13 @@ textarea {
 	}
 	/* END SCORE BUTTONS */
 
+	/* COMMENT META */
+	.comment-meta {
+		grid-column-start: 2;
+		grid-column-end: 2;
+		grid-row-start: 1;
+		margin-block-end: 1rem;
+	}
+	/* END COMMENT META */
+
 	/* END COMMENT */
