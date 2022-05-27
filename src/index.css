@@ -49,3 +49,20 @@ main {
 	margin: 0 auto;
 }
 
+/* COMMENT */
+.comment {
+	padding: 1rem;
+	border-radius: 6px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 3rem 1fr 2rem;
+	background-color: white;
+	margin-block-end: 1rem;
+}
+
+.comment-meta,
+.comment-content {
+	grid-column: 1 / span 2;
+}
+
+/* END COMMENT */
