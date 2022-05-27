@@ -156,4 +156,15 @@ main {
 }
 /* END COMMENT CONTROLS */
 
+/* COMMENT BEING UPDATED */
+.updating {
+	grid-template-rows: 3rem 1fr 3rem;
+}
+
+#update {
+	grid-row-start: 3;
+	grid-column-start: 3;
+}
+/* END COMMENT BEING UPDATED */
+
 /* END COMMENT */
