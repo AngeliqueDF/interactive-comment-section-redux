@@ -87,4 +87,31 @@ main {
 }
 /* END SCORE BUTTONS COMPONENT */
 
+/* COMMENT META */
+.comment-meta {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin-block-end: 1.5rem;
+}
+.own-comment-indicator {
+	background-color: var(--moderate-blue);
+	color: var(--white);
+	font-weight: 400;
+	padding: 0.1rem 0.3rem;
+}
+.comment-author-image {
+	width: 2rem;
+	height: 2rem;
+	margin-inline-end: 1rem;
+}
+.comment-date {
+	margin-inline-end: auto;
+}
+.comment-author {
+	font-weight: 700;
+	margin-inline-end: 1rem;
+}
+/* END COMMENT META */
+
 /* END COMMENT */
