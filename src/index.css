@@ -215,3 +215,9 @@ textarea {
 	border: 1px solid var(--light-grayish-blue);
 }
 
+.new-comment img,
+.new-reply img {
+	width: 2.5rem;
+	margin: 0 auto;
+}
+
