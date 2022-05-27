@@ -163,6 +163,9 @@ main {
 .updating {
 	grid-template-rows: 3rem 1fr 3rem;
 }
+.updating .comment-control {
+	display: none;
+}
 
 #update {
 	grid-row-start: 3;
