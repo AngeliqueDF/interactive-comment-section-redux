@@ -341,3 +341,7 @@ textarea {
 		margin-inline-start: auto;
 	}
 
+	#update {
+		grid-column-start: 3;
+	}
+
