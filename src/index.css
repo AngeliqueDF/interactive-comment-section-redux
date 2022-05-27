@@ -345,3 +345,8 @@ textarea {
 		grid-column-start: 3;
 	}
 
+	.updating .comment-control {
+		display: flex;
+		margin-inline-start: auto;
+	}
+}
