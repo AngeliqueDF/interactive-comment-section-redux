@@ -159,6 +159,7 @@ main {
 /* END COMMENT CONTROLS */
 
 /* COMMENT BEING UPDATED */
+/* Increase the height of the last row, so that the "UPDATE" button doesn't overflow it since it's larger than .comment-controls */
 .updating {
 	grid-template-rows: 3rem 1fr 3rem;
 }
