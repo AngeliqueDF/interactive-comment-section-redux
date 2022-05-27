@@ -295,4 +295,14 @@ textarea {
 	}
 	/* END COMMENT CONTENT */
 
+	/* COMMENT CONTROLS */
+	.comment-control {
+		grid-row-start: 1;
+		grid-column-start: 3;
+		margin-block-end: 1rem;
+	}
+	.comment-control button {
+		font-size: 1rem;
+	}
+	/* END COMMENT CONTROLS */
 	/* END COMMENT */
