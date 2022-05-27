@@ -168,3 +168,12 @@ main {
 /* END COMMENT BEING UPDATED */
 
 /* END COMMENT */
+
+/* REPLIES */
+/* Add decorative line and blank space before replies */
+.comment-replies {
+	border-inline-start: 1px solid var(--light-grayish-blue);
+	padding-inline-start: 1rem;
+}
+/* END REPLIES */
+
