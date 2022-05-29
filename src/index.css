@@ -1,0 +1,355 @@
+@font-face {
+	font-family: "Rubik";
+	src: url("./fonts/Rubik/Rubik-Regular.ttf");
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Rubik";
+	src: url("./fonts/Rubik/Rubik-Medium.ttf");
+	font-weight: 500;
+}
+@font-face {
+	font-family: "Rubik";
+	src: url("./fonts/Rubik/Rubik-Bold.ttf");
+	font-weight: 700;
+}
+
+:root {
+	--moderate-blue: hsl(238, 40%, 52%);
+	--soft-red: hsl(358, 79%, 66%);
+	--light-grayish-blue: hsl(239, 57%, 85%);
+	--pale-red: hsl(357, 100%, 86%);
+	--dark-blue: hsl(212, 24%, 26%);
+	--grayish-blue: hsl(211, 10%, 45%);
+	--light-gray: hsl(223, 19%, 93%);
+	--very-light-gray: hsl(228, 33%, 97%);
+	--white: hsl(0, 0%, 100%);
+}
+
+body {
+	background-color: var(--light-gray);
+	padding: 2rem 0;
+	font-family: "Rubik";
+	font-size: 16px;
+	color: var(--grayish-blue);
+	font-weight: 400;
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+}
+
+/* CUSTOM RESET */
+input[type="submit"],
+button {
+	border: unset;
+	background: unset;
+	padding: unset;
+}
+/* END CUSTOM RESETS */
+
+main {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+/* COMMENT */
+.comment {
+	padding: 1rem;
+	border-radius: 6px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 3rem 1fr 2rem;
+	background-color: white;
+	margin-block-end: 1rem;
+}
+
+.comment-meta,
+.comment-content {
+	grid-column: 1 / span 2;
+}
+
+/* SCORE BUTTONS COMPONENT */
+.score-buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	grid-column: 1 / span 1;
+	grid-row: 3;
+	width: 5rem;
+	border-radius: 9px;
+	color: var(--moderate-blue);
+	background-color: var(--light-gray);
+}
+.score-buttons button {
+	color: var(--light-grayish-blue);
+	font-size: 1rem;
+	padding: 0.75rem;
+}
+.score-buttons span {
+	font-weight: bold;
+}
+/* END SCORE BUTTONS COMPONENT */
+
+/* COMMENT META */
+.comment-meta {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin-block-end: 1.5rem;
+}
+.own-comment-indicator {
+	background-color: var(--moderate-blue);
+	color: var(--white);
+	font-weight: 400;
+	padding: 0.1rem 0.3rem;
+}
+.comment-author-image {
+	width: 2rem;
+	height: 2rem;
+	margin-inline-end: 1rem;
+}
+.comment-date {
+	margin-inline-end: auto;
+}
+.comment-author {
+	font-weight: 700;
+	margin-inline-end: 1rem;
+}
+/* END COMMENT META */
+
+/* COMMENT CONTENT */
+.comment-content {
+	margin-block-end: 1rem;
+	line-height: 1.4rem;
+}
+.replying-to {
+	color: var(--moderate-blue);
+	font-weight: bold;
+}
+/* END COMMENT CONTENT */
+
+/* COMMENT CONTROLS */
+.comment-control {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	grid-row-start: 3;
+	grid-column-start: 2;
+}
+.comment-control button {
+	color: var(--moderate-blue);
+	font-weight: 700;
+}
+.comment-control .delete-button,
+.comment-control .edit-button,
+.comment-control .reply-button {
+	padding: 0.25rem 0.25rem 0.25rem 1.1rem;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 0.7rem 0.7rem;
+}
+.comment-control .reply-button {
+	background-image: url("./images/icon-reply.svg");
+}
+.comment-control .delete-button {
+	color: var(--soft-red);
+	background-image: url("./images/icon-delete.svg");
+}
+.comment-control .edit-button {
+	background-image: url("./images/icon-edit.svg");
+	margin-inline-start: 0.5rem;
+}
+/* END COMMENT CONTROLS */
+
+/* COMMENT BEING UPDATED */
+/* Increase the height of the last row, so that the "UPDATE" button doesn't overflow it since it's larger than .comment-controls */
+.updating {
+	grid-template-rows: 3rem 1fr 3rem;
+}
+.updating .comment-control {
+	display: none;
+}
+
+#update {
+	grid-row-start: 3;
+	grid-column-start: 2;
+}
+/* END COMMENT BEING UPDATED */
+
+/* END COMMENT */
+
+/* REPLIES */
+/* Add decorative line and blank space before replies */
+.comment-replies {
+	border-inline-start: 1px solid var(--light-grayish-blue);
+	padding-inline-start: 1rem;
+}
+/* END REPLIES */
+
+/* NEW REPLY/COMMENT */
+.new-reply {
+	margin: -0.4rem auto 1rem;
+}
+
+.new-comment,
+.new-reply {
+	padding: 1rem;
+	display: grid;
+	grid-template-rows: 1fr 3rem;
+	grid-template-columns: repeat(2, 1fr);
+	background-color: var(--white);
+	border-radius: 6px;
+}
+
+textarea::placeholder,
+textarea {
+	font-family: "Rubik";
+	color: var(--grayish-blue);
+}
+
+.new-comment textarea,
+.new-reply textarea {
+	grid-row: 1 / span 1;
+	grid-column: 1 / span 2;
+	margin-bottom: 1rem;
+	border-radius: 6px;
+	padding: 1rem;
+	min-height: 4rem;
+	border: 1px solid var(--light-grayish-blue);
+}
+
+.new-comment img,
+.new-reply img {
+	width: 2.5rem;
+	margin: auto 0;
+}
+
+#add-new-comment,
+#update,
+.new-reply button {
+	background-color: var(--moderate-blue);
+	color: white;
+	border-radius: 9px;
+	text-transform: uppercase;
+	width: 6rem;
+	height: 3rem;
+	margin-inline-start: auto;
+	margin: auto 0 auto auto;
+}
+/* END NEW REPLY/COMMENT */
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 1440px) {
+	button:hover,
+	input[type="submit"]:hover {
+		cursor: pointer;
+	}
+	button:active,
+	input[type="submit"]:active {
+		opacity: 50%;
+	}
+
+	.score-buttons button:active {
+		color: var(--moderate-blue);
+		opacity: 100%;
+	}
+
+	main {
+		width: 49%;
+	}
+
+	/* COMMENT */
+	.comment {
+		grid-template-columns: 3.5rem 1fr 1fr;
+		grid-template-rows: 3rem 1fr;
+	}
+
+	/* SCORE BUTTONS */
+	.score-buttons {
+		grid-row-start: 1;
+		grid-column-start: 1;
+		flex-direction: column;
+
+		width: 2.5rem;
+		height: 6rem;
+	}
+	/* END SCORE BUTTONS */
+
+	/* COMMENT META */
+	.comment-meta {
+		grid-column-start: 2;
+		grid-column-end: 2;
+		grid-row-start: 1;
+		margin-block-end: 1rem;
+	}
+	/* END COMMENT META */
+
+	/* COMMENT CONTENT */
+	.comment-content {
+		grid-row-start: 2;
+		grid-column-start: 2;
+	}
+	/* END COMMENT CONTENT */
+
+	/* COMMENT CONTROLS */
+	.comment-control {
+		grid-row-start: 1;
+		grid-column-start: 3;
+		margin-block-end: 1rem;
+	}
+	.comment-control button {
+		font-size: 1rem;
+	}
+	/* END COMMENT CONTROLS */
+
+	/* REPLIES */
+	.comment-replies {
+		margin-left: 2.25rem;
+		padding-inline-start: 2rem;
+	}
+	/* END REPLIES */
+	/* END COMMENT */
+
+	.new-comment,
+	.new-reply {
+		grid-template-columns: 2.5rem 1fr 6rem;
+		grid-template-rows: 3rem 3rem;
+		column-gap: 1rem;
+	}
+
+	.new-comment img,
+	.new-reply img {
+		grid-row-start: 1;
+		grid-column-start: 1;
+	}
+
+	.new-comment textarea,
+	.new-reply textarea {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row-start: 1 / span 2;
+	}
+
+	#add-new-comment,
+	.new-reply button {
+		grid-column-start: 3;
+		grid-row-start: 1;
+		margin-inline-start: auto;
+	}
+
+	#update {
+		grid-column-start: 3;
+	}
+
+	.updating .comment-control {
+		display: flex;
+		margin-inline-start: auto;
+	}
+}
