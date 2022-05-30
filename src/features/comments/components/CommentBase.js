@@ -8,22 +8,13 @@ import NewReply from "./NewReply";
  * Presentational component for comments (top level, and replies)
  */
 const CommentBase = ({
-	comment: { id, content, createdAt, score, replyingTo, user, gettingReply },
+	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
-	incrementScore,
-	decrementScore,
 }) => {
-	gettingReply = true;
 	return (
 		<>
 			<article className="comment updating">
-				<ScoreButtons
-					id={id}
-					replyingTo={replyingTo}
-					score={score}
-					incrementScore={incrementScore}
-					decrementScore={decrementScore}
-				/>
+				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
 
 				{/* change class ? */}
 				<div className="comment-meta">

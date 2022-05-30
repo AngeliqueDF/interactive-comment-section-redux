@@ -1,28 +1,9 @@
-const ScoreButtons = ({
-	id,
-	score,
-	replyingTo,
-	incrementScore,
-	decrementScore,
-}) => {
-	const handleIncrement = (e) => {
-		incrementScore(id, replyingTo);
-		console.log(id);
-	};
-	const handleDecrement = (e) => {
-		decrementScore(id, replyingTo);
-		console.log(id);
-	};
-
+const ScoreButtons = ({ id, score, replyingTo }) => {
 	return (
 		<div className="score-buttons">
-			<button data-score-action="increment" onClick={handleIncrement}>
-				+
-			</button>
+			<button data-score-action="increment">+</button>
 			<span>{score}</span>
-			<button data-score-action="decrement" onClick={handleDecrement}>
-				-
-			</button>
+			<button data-score-action="decrement">-</button>
 		</div>
 	);
 };
