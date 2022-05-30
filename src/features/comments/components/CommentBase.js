@@ -10,19 +10,11 @@ import NewReply from "./NewReply";
 const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
-	incrementScore,
-	decrementScore,
 }) => {
 	return (
 		<>
 			<article className="comment updating">
-				<ScoreButtons
-					id={id}
-					replyingTo={replyingTo}
-					score={score}
-					incrementScore={incrementScore}
-					decrementScore={decrementScore}
-				/>
+				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
 
 				{/* change class ? */}
 				<div className="comment-meta">
