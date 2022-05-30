@@ -2,7 +2,7 @@ import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
 import CommentControl from "./CommentControl";
 import CommentContent from "./CommentContent";
-import NewReply from "./NewReply";
+import NewComment from "./NewComment";
 
 /**
  * Presentational component for comments (top level, and replies)
@@ -49,7 +49,7 @@ const CommentBase = ({
 			</article>
 
 			{gettingReply ? (
-				<NewReply currentUser={currentUser} replyingTo={user.username} />
+				<NewComment currentUser={currentUser} replyingTo={user.username} />
 			) : null}
 		</>
 	);
