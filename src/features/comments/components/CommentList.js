@@ -1,11 +1,6 @@
 import TopLevelComment from "./TopLevelComment";
 
-const CommentList = ({
-	comments,
-	currentUser,
-	// incrementScore,
-	// decrementScore,
-}) => {
+const CommentList = ({ comments }) => {
 	return (
 		<>
 			{comments &&
@@ -14,8 +9,6 @@ const CommentList = ({
 						key={comment.id}
 						comment={comment}
 						currentUser={currentUser}
-						// incrementScore={incrementScore}
-						// decrementScore={decrementScore}
 					/>
 				))}
 		</>

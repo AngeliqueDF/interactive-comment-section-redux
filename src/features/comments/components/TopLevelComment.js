@@ -10,12 +10,7 @@ const Replies = ({ replies, currentUser }) => {
 	);
 };
 
-const TopLevelComment = ({
-	comment,
-	currentUser,
-	// incrementScore,
-	// decrementScore,
-}) => {
+const TopLevelComment = ({ comment, currentUser }) => {
 	return (
 		<>
 			<CommentBase comment={comment} currentUser={currentUser} />

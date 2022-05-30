@@ -1,10 +1,4 @@
-const ScoreButtons = ({
-	id,
-	score,
-	replyingTo,
-	incrementScore,
-	decrementScore,
-}) => {
+const ScoreButtons = ({ id, score, replyingTo }) => {
 	const handleIncrement = (e) => {
 		incrementScore(id, replyingTo);
 		console.log(id);
