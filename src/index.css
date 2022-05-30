@@ -187,12 +187,11 @@ main {
 /* END REPLIES */
 
 /* NEW REPLY/COMMENT */
-.new-reply {
+.reply {
 	margin: -0.4rem auto 1rem;
 }
 
-.new-comment,
-.new-reply {
+.new-comment {
 	padding: 1rem;
 	display: grid;
 	grid-template-rows: 1fr 3rem;
@@ -207,8 +206,7 @@ textarea {
 	color: var(--grayish-blue);
 }
 
-.new-comment textarea,
-.new-reply textarea {
+.new-comment textarea {
 	grid-row: 1 / span 1;
 	grid-column: 1 / span 2;
 	margin-bottom: 1rem;
@@ -218,8 +216,7 @@ textarea {
 	border: 1px solid var(--light-grayish-blue);
 }
 
-.new-comment img,
-.new-reply img {
+.new-comment img {
 	width: 2.5rem;
 	margin: auto 0;
 }

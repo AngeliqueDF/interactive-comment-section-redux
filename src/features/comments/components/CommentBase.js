@@ -1,8 +1,9 @@
+import Button from "./Button";
 import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
 import CommentControl from "./CommentControl";
 import CommentContent from "./CommentContent";
-import NewReply from "./NewReply";
+import NewComment from "./NewComment";
 
 /**
  * Presentational component for comments (top level, and replies)
@@ -37,11 +38,22 @@ const CommentBase = ({
 					author={user.username}
 				/>
 
-				<button id="update">update</button>
+				{updating ? (
+					<Button
+						idAttribute="update"
+						replyingTo={replyingTo}
+						content="update"
+						updating={updating}
+						onClick={(e) => console.log(e.target.dataset)}
+						dataRequestType="UPDATE_CONTENT"
+					/>
+				) : (
+					""
+				)}
 			</article>
 
 			{gettingReply ? (
-				<NewReply currentUser={currentUser} replyingTo={user.username} />
+				<NewComment currentUser={currentUser} replyingTo={user.username} />
 			) : null}
 		</>
 	);

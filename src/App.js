@@ -4,7 +4,7 @@ import "./App.css";
 import { useSelector } from "react-redux";
 
 import CommentList from "./features/comments/components/CommentList";
-import NewCommentInput from "./features/comments/components/NewCommentInput";
+import NewComment from "./features/comments/components/NewComment";
 
 function App() {
 	// TODO move to its reducer
@@ -19,7 +19,7 @@ function App() {
 	return (
 		<main>
 			<CommentList comments={comments} currentUser={currentUser} />
-			<NewCommentInput currentUser={currentUser} />
+			<NewComment currentUser={currentUser} />
 		</main>
 	);
 }
