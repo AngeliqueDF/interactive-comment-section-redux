@@ -1,9 +1,18 @@
-const CommentContent = ({ user, replyingTo, currentUsername, content }) => {
+const CommentContent = ({
+	user,
+	replyingTo,
+	currentUsername,
+	content,
+	updating,
+}) => {
 	return (
 		<div
-			className="comment-content"
 			// TODO add gettingUpdated to condition
 			contentEditable={currentUsername === user.username ? true : false}
+			// Add the .updating class to apply a border to the text area, visible when it loses focus
+			className={`comment-content ${
+				currentUsername === user.username && updating ? "updating" : ""
+			}`}
 			suppressContentEditableWarning={
 				currentUsername === user.username ? true : null
 			}
