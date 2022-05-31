@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "./Button";
 import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
@@ -12,6 +13,10 @@ const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
 }) => {
+	const [updating, setUpdating] = useState(false);
+	const handleEditBtnClick = () => {
+		setUpdating(!updating);
+	};
 	return (
 		<>
 			<article className="comment updating">
