@@ -1,4 +1,8 @@
 import { useRef, useState, useEffect } from "react";
+import {
+	moveCaretToContentEditableEnd,
+} from "../../../utils/helper";
+
 import Button from "./Button";
 import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
@@ -18,6 +22,16 @@ const CommentBase = ({
 		setUpdating(!updating);
 	};
 	const contentArea = useRef(null);
+	useEffect(() => {
+		if (contentArea.current) {
+			// focus on the content area that is now editable
+			contentArea.current.focus();
+
+			// then move the caret at the end for better UX
+			moveCaretToContentEditableEnd(".comment-content.updating");
+		}
+	});
+
 	return (
 		<>
 			<article
