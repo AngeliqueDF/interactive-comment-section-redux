@@ -17,6 +17,7 @@ const CommentBase = ({
 	const handleEditBtnClick = () => {
 		setUpdating(!updating);
 	};
+	const contentArea = useRef(null);
 	return (
 		<>
 			<article
@@ -39,6 +40,7 @@ const CommentBase = ({
 					content={content}
 					replyingTo={replyingTo}
 					currentUsername={currentUser.username}
+					contentArea={contentArea}
 				/>
 
 				<CommentControl

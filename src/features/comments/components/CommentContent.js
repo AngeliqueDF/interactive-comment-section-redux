@@ -3,6 +3,7 @@ const CommentContent = ({
 	replyingTo,
 	currentUsername,
 	content,
+	contentArea,
 	updating,
 }) => {
 	return (
@@ -18,6 +19,7 @@ const CommentContent = ({
 			suppressContentEditableWarning={
 				currentUsername === user.username ? true : null
 			}
+			ref={currentUsername === user.username && updating ? contentArea : null}
 		>
 			{replyingTo ? (
 				<>
