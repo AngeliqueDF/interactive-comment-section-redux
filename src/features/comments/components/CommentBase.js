@@ -76,6 +76,10 @@ const CommentBase = ({
 			</article>
 
 			<NewComment currentUser={currentUser} replyingTo={user.username} />
+				<NewComment
+					currentUser={currentUser}
+					replyingTo={user.username}
+				/>
 		</>
 	);
 };
