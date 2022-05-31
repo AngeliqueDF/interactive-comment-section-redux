@@ -34,6 +34,7 @@ const CommentBase = ({
 				</div>
 
 				<CommentContent
+					updating={updating}
 					user={user}
 					content={content}
 					replyingTo={replyingTo}
