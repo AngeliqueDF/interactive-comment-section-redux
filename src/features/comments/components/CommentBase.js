@@ -64,6 +64,7 @@ const CommentBase = ({
 				<CommentControl
 					currentUsername={currentUser.username}
 					author={user.username}
+					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
 				/>
 
