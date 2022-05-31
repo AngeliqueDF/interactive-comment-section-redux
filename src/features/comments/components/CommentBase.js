@@ -17,6 +17,10 @@ const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
 }) => {
+	const [gettingReply, setGettingReply] = useState(false);
+	const handleReplyBtnClick = () => {
+		setGettingReply(!gettingReply);
+	};
 	const [updating, setUpdating] = useState(false);
 	const handleEditBtnClick = () => {
 		setUpdating(!updating);
