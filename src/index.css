@@ -229,10 +229,8 @@ textarea {
 	width: 2.5rem;
 	margin: auto 0;
 }
-
-#add-new-comment,
-#update,
-.new-reply button {
+/* TODO check all buttons have this style */
+.confirm-button {
 	background-color: var(--moderate-blue);
 	color: white;
 	border-radius: 9px;
