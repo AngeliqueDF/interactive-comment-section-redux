@@ -19,7 +19,9 @@ const CommentBase = ({
 	};
 	return (
 		<>
-			<article className="comment updating">
+			<article
+				className={`comment ${updating ? "updating" : ""}`}
+			>
 				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
 
 				{/* change class ? */}
