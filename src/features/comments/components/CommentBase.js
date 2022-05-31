@@ -41,6 +41,7 @@ const CommentBase = ({
 				<CommentControl
 					currentUsername={currentUser.username}
 					author={user.username}
+					toggleUpdating={handleEditBtnClick}
 				/>
 
 				{updating ? (
