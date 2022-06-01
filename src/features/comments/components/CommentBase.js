@@ -48,6 +48,11 @@ const CommentBase = ({
 		}
 	});
 
+	const [deleting, setDeleting] = useState(false);
+	const toggleDeleteModal = () => {
+		setDeleting(!deleting);
+	};
+
 	return (
 		<>
 			<article
@@ -76,7 +81,9 @@ const CommentBase = ({
 
 				<CommentControl
 					currentUsername={currentUser.username}
+					deleting={deleting}
 					author={user.username}
+					toggleDeleteModal={toggleDeleteModal}
 					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
 				/>
