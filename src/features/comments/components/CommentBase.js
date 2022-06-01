@@ -26,8 +26,13 @@ const CommentBase = ({
 	useEffect(() => {
 		if (replyingRef.current) {
 			replyingRef.current.focus();
+
+			// From the comment, find the its form.reply sibling element and select this sibling's textarea child element
+			const textAreaSelector = `#${user.username}-${id} + .reply > textarea`;
+			moveCaretToTextareaEnd(textAreaSelector);
 		}
 	});
+
 	const [updating, setUpdating] = useState(false);
 	const handleEditBtnClick = () => {
 		setUpdating(!updating);
