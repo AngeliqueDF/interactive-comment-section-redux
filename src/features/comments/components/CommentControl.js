@@ -1,11 +1,23 @@
+import DeleteCommentModal from "./DeleteCommentModal";
+
 const CommentControl = ({
 	currentUsername,
 	author,
+	commentID,
 	deleting,
 	toggleDeleteModal,
 	toggleGettingReply,
 	toggleUpdating,
 }) => {
+	if (deleting) {
+		document.querySelector("main").classList.add("modal-open");
+		return (
+			<DeleteCommentModal
+				commentID={commentID}
+				toggleDeleteModal={toggleDeleteModal}
+			/>
+		);
+	}
 	if (currentUsername === author) {
 		const handleEditBtnClick = () => {
 			toggleUpdating();
