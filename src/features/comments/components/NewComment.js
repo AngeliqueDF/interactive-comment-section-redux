@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const NewComment = ({ currentUser, replyingTo }) => {
+const NewComment = ({ currentUser, replyingTo, replyingRef }) => {
 	// If the user's information wasn't received yet, exit
 	if (!currentUser) return;
 
@@ -24,6 +24,7 @@ const NewComment = ({ currentUser, replyingTo }) => {
 			<textarea
 				defaultValue={attributes.defaultValue}
 				placeholder={attributes.placeholder}
+				ref={replyingTo ? replyingRef : null}
 			></textarea>
 
 			<Button
