@@ -52,6 +52,72 @@ main {
 	margin: 0 auto;
 }
 
+.modal {
+	position: fixed;
+	background-color: white;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+	bottom: 50%;
+	width: 23%;
+	height: 12rem;
+	transform: translate(-50%, -50%);
+
+	padding: 1.5rem 2rem;
+	border-radius: 9px;
+}
+
+.modal-title,
+.modal-message {
+	margin: 0.75rem auto;
+}
+
+.modal-title {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.modal-message {
+	line-height: 1.5rem;
+}
+
+.modal-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal-cancel,
+.modal-confirm {
+	color: white;
+	text-transform: uppercase;
+	font-size: 1rem;
+	padding: 1rem 1.8rem;
+	border-radius: 0.5rem;
+}
+
+.modal-cancel {
+	background-color: var(--grayish-blue);
+}
+.modal-confirm {
+	background-color: var(--soft-red);
+}
+
+main.modal-open::after {
+	content: "";
+	display: block;
+	min-height: 100vh;
+	position: fixed;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--grayish-blue);
+	opacity: 50%;
+	overflow: hidden;
+}
+
 /* COMMENT */
 .comment {
 	padding: 1rem;
