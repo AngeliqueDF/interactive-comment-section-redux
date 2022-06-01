@@ -50,6 +50,19 @@ button {
 main {
 	max-width: 90%;
 	margin: 0 auto;
+main.modal-open::after {
+	content: "";
+	display: block;
+	min-height: 100vh;
+	position: fixed;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--grayish-blue);
+	opacity: 50%;
+	overflow: hidden;
 }
 
 /* COMMENT */
