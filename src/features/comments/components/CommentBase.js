@@ -1,5 +1,8 @@
 import { useRef, useState, useEffect } from "react";
-import { moveCaretToContentEditableEnd } from "../../../utils/helper";
+import {
+	moveCaretToContentEditableEnd,
+	moveCaretToTextareaEnd,
+} from "../../../utils/helper";
 
 import Button from "./Button";
 import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
@@ -15,6 +18,21 @@ const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
 }) => {
+	const [gettingReply, setGettingReply] = useState(false);
+	const handleReplyBtnClick = () => {
+		setGettingReply(!gettingReply);
+	};
+	const replyingRef = useRef(null);
+	useEffect(() => {
+		if (replyingRef.current) {
+			replyingRef.current.focus();
+
+			// From the comment, find the its form.reply sibling element and select this sibling's textarea child element
+			const textAreaSelector = `#${user.username}-${id} + .reply > textarea`;
+			moveCaretToTextareaEnd(textAreaSelector);
+		}
+	});
+
 	const [updating, setUpdating] = useState(false);
 	const handleEditBtnClick = () => {
 		setUpdating(!updating);
@@ -33,6 +51,7 @@ const CommentBase = ({
 	return (
 		<>
 			<article
+				id={`${user.username}-${id}`}
 				className={`comment ${updating ? "updating" : ""}`}
 			>
 				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
@@ -58,6 +77,7 @@ const CommentBase = ({
 				<CommentControl
 					currentUsername={currentUser.username}
 					author={user.username}
+					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
 				/>
 
@@ -75,11 +95,13 @@ const CommentBase = ({
 				)}
 			</article>
 
-			<NewComment currentUser={currentUser} replyingTo={user.username} />
+			{gettingReply ? (
 				<NewComment
+					replyingRef={replyingRef}
 					currentUser={currentUser}
 					replyingTo={user.username}
 				/>
+			) : null}
 		</>
 	);
 };

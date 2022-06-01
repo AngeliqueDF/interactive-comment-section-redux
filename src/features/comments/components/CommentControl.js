@@ -1,6 +1,7 @@
 const CommentControl = ({
 	currentUsername,
 	author,
+	toggleGettingReply,
 	toggleUpdating,
 }) => {
 	if (currentUsername === author) {
@@ -18,9 +19,14 @@ const CommentControl = ({
 			</div>
 		);
 	} else {
+		const handleClick = (e) => {
+			toggleGettingReply();
+		};
 		return (
 			<div className="comment-control">
-				<button className="reply-button">Reply</button>
+				<button onClick={handleClick} className="reply-button">
+					Reply
+				</button>
 			</div>
 		);
 	}
