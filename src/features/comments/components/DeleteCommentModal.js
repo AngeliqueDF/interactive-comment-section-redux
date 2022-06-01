@@ -1,4 +1,8 @@
 const DeleteCommentModal = ({ toggleDeleteModal, commentID }) => {
+	const handleCancelBtnClick = () => {
+		document.querySelector("main").classList.remove("modal-open");
+		toggleDeleteModal();
+	};
 	return (
 		<div className="modal">
 			<div className="modal-title">Delete comment</div>
@@ -8,7 +12,9 @@ const DeleteCommentModal = ({ toggleDeleteModal, commentID }) => {
 			</div>
 
 			<div className="modal-buttons">
-				<button className="modal-cancel">No, cancel</button>
+				<button onClick={handleCancelBtnClick} className="modal-cancel">
+					No, cancel
+				</button>
 
 				{/* TODO send DELETE request with commentID on click */}
 				<button
