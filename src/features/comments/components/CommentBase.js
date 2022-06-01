@@ -22,6 +22,12 @@ const CommentBase = ({
 	const handleReplyBtnClick = () => {
 		setGettingReply(!gettingReply);
 	};
+	const replyingRef = useRef(null);
+	useEffect(() => {
+		if (replyingRef.current) {
+			replyingRef.current.focus();
+		}
+	});
 	const [updating, setUpdating] = useState(false);
 	const handleEditBtnClick = () => {
 		setUpdating(!updating);
@@ -85,6 +91,7 @@ const CommentBase = ({
 
 			{gettingReply ? (
 				<NewComment
+					replyingRef={replyingRef}
 					currentUser={currentUser}
 					replyingTo={user.username}
 				/>
