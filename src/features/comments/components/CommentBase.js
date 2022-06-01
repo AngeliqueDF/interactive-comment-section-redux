@@ -1,5 +1,8 @@
 import { useRef, useState, useEffect } from "react";
-import { moveCaretToContentEditableEnd } from "../../../utils/helper";
+import {
+	moveCaretToContentEditableEnd,
+	moveCaretToTextareaEnd,
+} from "../../../utils/helper";
 
 import Button from "./Button";
 import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
