@@ -206,24 +206,31 @@ textarea {
 	color: var(--grayish-blue);
 }
 
+.updating .comment-content,
+.new-comment textarea {
+	border: 1px solid var(--light-grayish-blue);
+}
+
 .new-comment textarea {
 	grid-row: 1 / span 1;
 	grid-column: 1 / span 2;
 	margin-bottom: 1rem;
-	border-radius: 6px;
 	padding: 1rem;
 	min-height: 4rem;
-	border: 1px solid var(--light-grayish-blue);
+	border-radius: 6px;
+}
+
+.updating .comment-content {
+	padding: 0.25rem;
+	border-radius: 6px;
 }
 
 .new-comment img {
 	width: 2.5rem;
 	margin: auto 0;
 }
-
-#add-new-comment,
-#update,
-.new-reply button {
+/* TODO check all buttons have this style */
+.confirm-button {
 	background-color: var(--moderate-blue);
 	color: white;
 	border-radius: 9px;
