@@ -46,6 +46,7 @@ const CommentBase = ({
 	return (
 		<>
 			<article
+				id={`${user.username}-${id}`}
 				className={`comment ${updating ? "updating" : ""}`}
 			>
 				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
