@@ -1,6 +1,6 @@
 import TopLevelComment from "./TopLevelComment";
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ comments, currentUser }) => {
 	return (
 		<>
 			{comments &&
