@@ -83,7 +83,12 @@ const CommentBase = ({
 				)}
 			</article>
 
-			<NewComment currentUser={currentUser} replyingTo={user.username} />
+			{gettingReply ? (
+				<NewComment
+					currentUser={currentUser}
+					replyingTo={user.username}
+				/>
+			) : null}
 		</>
 	);
 };
