@@ -1,6 +1,15 @@
-import commentsReducer from "./commentsSlice";
+import commentsReducer, { initialState } from "./commentsSlice";
 
 describe("commentsReducer", () => {
+	test("Returns the correct initial state when called with an undefined state", () => {
+		const state = {};
+		const action = {
+			type: "no action",
+		};
+
+		const newState = commentsReducer(undefined, action);
+		expect(newState).toEqual(initialState);
+	});
 	test("Adds a new comment to the state with comments/addComment", () => {
 		const state = [];
 		const action = {
