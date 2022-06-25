@@ -1,5 +1,6 @@
 # Interactive comment section
 
+![Screenshot of the Interactive comment section](./src/images/screenshot-desktop.png)
 
 <div align="center">
   <img src="./src/images/logo-reactjs.svg">
