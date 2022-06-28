@@ -11,6 +11,7 @@ const initialState = [
 		score: 12,
 		user: 0,
 		replies: [],
+		replyingToUser: null,
 	},
 	{
 		id: 1,
@@ -20,6 +21,7 @@ const initialState = [
 		score: 5,
 		user: 1,
 		replies: [2, 3],
+		replyingToUser: null,
 	},
 	{
 		id: 2,
@@ -29,6 +31,7 @@ const initialState = [
 		score: 4,
 		user: 2,
 		replies: [3],
+		replyingToUser: 1,
 	},
 	{
 		id: 3,
@@ -38,6 +41,7 @@ const initialState = [
 		score: 2,
 		user: 3,
 		replies: [],
+		replyingToUser: 2,
 	},
 ];
 
