@@ -12,6 +12,7 @@ const initialState = [
 		user: 0,
 		replies: [],
 		replyingToUser: null,
+		replyingToComment: null,
 	},
 	{
 		id: 1,
@@ -22,6 +23,7 @@ const initialState = [
 		user: 1,
 		replies: [2, 3],
 		replyingToUser: null,
+		replyingToComment: null,
 	},
 	{
 		id: 2,
@@ -32,6 +34,7 @@ const initialState = [
 		user: 2,
 		replies: [3],
 		replyingToUser: 1,
+		replyingToComment: 1,
 	},
 	{
 		id: 3,
@@ -42,6 +45,7 @@ const initialState = [
 		user: 3,
 		replies: [],
 		replyingToUser: 2,
+		replyingToComment: 2,
 	},
 ];
 
