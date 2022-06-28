@@ -15,8 +15,8 @@ import NewComment from "./NewComment";
  * Presentational component for comments (top level, and replies)
  */
 const CommentBase = ({
-	comment: { id, content, createdAt, score, replyingTo, user },
 	currentUser,
+	comment: { id, content, createdAt, score, replyingToUser, user },
 }) => {
 	const [gettingReply, setGettingReply] = useState(false);
 	const handleReplyBtnClick = () => {

@@ -16,12 +16,6 @@ _A comment section with its own backend._
 
 ![Under Development](https://img.shields.io/badge/under-development-orange.svg)
 
-
-
-
-
-
-
 <br />
 
 ## Features
@@ -29,11 +23,6 @@ _A comment section with its own backend._
 - Allows users to participate in a conversation (CRUD).
 - Restrict certain interactions to the current user on the frontend.
 - Responsive UI.
-
-
-
-
-
 
 ## Author
 
