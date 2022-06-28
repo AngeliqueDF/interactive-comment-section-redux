@@ -1,9 +1,13 @@
 # Interactive comment section
 
+![Screenshot of the Interactive comment section](./src/images/screenshot-desktop.png)
 
 <div align="center">
-  <img src="./logo-reactjs.svg">
-  <img src="./logo-redux.svg">
+  <img src="./src/images/logo-reactjs.svg">
+  <img src="./src/images/logo-redux.svg">
+  <img style="width:48px; height: 48px" src="./src/images/logo-jestjs.svg">
+<img src="./src/images/logo-html5.svg">
+<img src="./src/images/logo-css3.svg">
 </div>
 
 ## Overview
@@ -12,12 +16,6 @@ _A comment section with its own backend._
 
 ![Under Development](https://img.shields.io/badge/under-development-orange.svg)
 
-
-
-
-
-
-
 <br />
 
 ## Features
@@ -25,11 +23,6 @@ _A comment section with its own backend._
 - Allows users to participate in a conversation (CRUD).
 - Restrict certain interactions to the current user on the frontend.
 - Responsive UI.
-
-
-
-
-
 
 ## Author
 
