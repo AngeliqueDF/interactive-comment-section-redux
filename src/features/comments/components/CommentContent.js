@@ -1,6 +1,5 @@
 const CommentContent = ({
 	user,
-	currentUsername,
 	replyingToUser,
 	content,
 	contentArea,
