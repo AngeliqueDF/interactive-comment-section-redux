@@ -1,6 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUser } from "./../../currentUser/currentUserSlice";
+
+import { addComment } from "../commentsSlice";
+
 import Button from "./Button";
 
 const NewComment = (props) => {
+	const currentUser = useSelector(selectCurrentUser);
+	const dispatch = useDispatch();
+
 	// If the user's information wasn't received yet, exit
 	if (!currentUser) return;
 
@@ -11,13 +19,18 @@ const NewComment = (props) => {
 		btnContent: "send",
 	};
 
-	const handleClick = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target.dataset);
+		const payload = {
+			content: e.target.newContent.value,
+			user: currentUser.id,
+		};
+		dispatch(addComment(payload));
+		e.target.newContent.value = "";
 	};
 
 	return (
-		<form className={attributes.formClass}>
+		<form className={attributes.formClass} onSubmit={handleSubmit}>
 			<img src={currentUser.image.png} alt={currentUser.username} />
 			<textarea
 				defaultValue={attributes.defaultValue}
