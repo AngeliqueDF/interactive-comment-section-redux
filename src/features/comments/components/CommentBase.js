@@ -75,7 +75,6 @@ const CommentBase = ({
 				/>
 
 				<CommentControl
-					currentUsername={currentUser.username}
 					commentID={id}
 					deleting={deleting}
 					toggleDeleteModal={toggleDeleteModal}
