@@ -63,10 +63,7 @@ const CommentBase = ({
 
 				{/* change class ? */}
 				<div className="comment-meta">
-					<CommentMeta
-						user={user}
-						createdAt={createdAt}
-					/>
+					<CommentMeta authorID={user} createdAt={createdAt} />
 				</div>
 
 				<CommentContent
