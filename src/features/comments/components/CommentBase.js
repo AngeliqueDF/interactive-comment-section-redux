@@ -59,7 +59,7 @@ const CommentBase = ({
 				id={`${user.username}-${id}`}
 				className={`comment ${updating ? "updating" : ""}`}
 			>
-				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
+				<ScoreButtons id={id} score={score} />
 
 				{/* change class ? */}
 				<div className="comment-meta">
@@ -74,8 +74,8 @@ const CommentBase = ({
 					updating={updating}
 					user={user}
 					content={content}
-					replyingTo={replyingTo}
 					currentUsername={currentUser.username}
+					replyingToUser={replyingToUser}
 					contentArea={contentArea}
 				/>
 
@@ -92,7 +92,6 @@ const CommentBase = ({
 				{updating ? (
 					<Button
 						idAttribute="update"
-						replyingTo={replyingTo}
 						content="update"
 						updating={updating}
 						onClick={(e) => console.log(e.target.dataset)}
@@ -107,7 +106,7 @@ const CommentBase = ({
 				<NewComment
 					replyingRef={replyingRef}
 					currentUser={currentUser}
-					replyingTo={user.username}
+					replyingToUser={user}
 				/>
 			) : null}
 		</>

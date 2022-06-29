@@ -1,7 +1,7 @@
 const CommentContent = ({
 	user,
-	replyingTo,
 	currentUsername,
+	replyingToUser,
 	content,
 	contentArea,
 	updating,
@@ -21,9 +21,9 @@ const CommentContent = ({
 			}
 			ref={currentUsername === user.username && updating ? contentArea : null}
 		>
-			{replyingTo ? (
+			{!(replyingToUser == null) ? (
 				<>
-					<span className="replying-to">@{replyingTo}</span>{" "}
+					<span className="replying-to">@{replyingToUser}</span>{" "}
 				</>
 			) : null}
 			{content}
