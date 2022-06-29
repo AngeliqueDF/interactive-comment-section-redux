@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../currentUser/currentUserSlice";
 const CommentMeta = ({ authorID, createdAt }) => {
+	const currentUser = useSelector(selectCurrentUser);
 	return (
 		<>
 			<img
