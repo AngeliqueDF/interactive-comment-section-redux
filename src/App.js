@@ -8,8 +8,8 @@ function App() {
 	// TODO fetch all comments in useEffect
 	return (
 		<main>
-			<CommentList comments={comments} currentUser={currentUser} />
-			<NewComment currentUser={currentUser} />
+			<CommentList />
+			<NewComment />
 		</main>
 	);
 }
