@@ -8,6 +8,9 @@ const CommentContent = ({
 	updating,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
+	// Determines whether the current user wrote the commnent being rendered
+	const byCurrentUser = currentUser.id === authorID;
+
 	return (
 		<div
 			// Add the .updating class to apply a border to the text area, visible when it loses focus
