@@ -84,6 +84,7 @@ const CommentBase = ({
 					authorID={user}
 					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
+					setReplyingToComment={setReplyingToComment}
 				/>
 
 				{updating ? (
