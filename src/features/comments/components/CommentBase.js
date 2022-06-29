@@ -98,7 +98,6 @@ const CommentBase = ({
 			{gettingReply ? (
 				<NewComment
 					replyingRef={replyingRef}
-					currentUser={currentUser}
 					replyingToUser={user}
 				/>
 			) : null}
