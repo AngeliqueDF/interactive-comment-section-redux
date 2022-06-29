@@ -14,8 +14,8 @@ const CommentMeta = ({ authorID, createdAt }) => {
 				alt={`${author.username}`}
 			/>
 			<p className="comment-author">
-				{user.username === currentUsername ? (
 				{author.username}{" "}
+				{author.id === currentUser.id ? (
 					<span className="own-comment-indicator">you</span>
 				) : null}
 			</p>
