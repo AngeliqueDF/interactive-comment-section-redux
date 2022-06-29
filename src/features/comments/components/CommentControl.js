@@ -1,7 +1,7 @@
 import DeleteCommentModal from "./DeleteCommentModal";
 
 const CommentControl = ({
-	author,
+	authorID,
 	commentID,
 	deleting,
 	toggleDeleteModal,
