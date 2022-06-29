@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
+import { selectComments } from "./../commentsSlice";
+
 import TopLevelComment from "./TopLevelComment";
 
-const CommentList = ({ comments, currentUser }) => {
+const CommentList = () => {
+	const comments = useSelector(selectComments);
 	return (
 		<>
 			{comments &&
