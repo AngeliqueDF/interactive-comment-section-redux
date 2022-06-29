@@ -1,22 +1,22 @@
 import CommentBase from "./CommentBase";
 
-const Replies = ({ replies, currentUser }) => {
+const Replies = ({ replies }) => {
 	return (
 		<div className="comment-replies">
 			{replies.map((reply) => (
-				<CommentBase key={reply.id} comment={reply} currentUser={currentUser} />
+				<CommentBase key={reply.id} comment={reply} />
 			))}
 		</div>
 	);
 };
 
-const TopLevelComment = ({ comment, currentUser }) => {
+const TopLevelComment = ({ comment }) => {
 	return (
 		<>
-			<CommentBase comment={comment} currentUser={currentUser} />
+			<CommentBase comment={comment} />
 
 			{comment.replies.length > 0 ? (
-				<Replies replies={comment.replies} currentUser={currentUser} />
+				<Replies replies={comment.replies} />
 			) : null}
 		</>
 	);
