@@ -1,14 +1,16 @@
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../currentUser/currentUserSlice";
 import DeleteCommentModal from "./DeleteCommentModal";
 
 const CommentControl = ({
-	currentUsername,
-	author,
+	authorID,
 	commentID,
 	deleting,
 	toggleDeleteModal,
 	toggleGettingReply,
 	toggleUpdating,
 }) => {
+	const currentUser = useSelector(selectCurrentUser);
 	if (deleting) {
 		document.querySelector("main").classList.add("modal-open");
 		return (
@@ -18,7 +20,7 @@ const CommentControl = ({
 			/>
 		);
 	}
-	if (currentUsername === author) {
+	if (currentUser.id === authorID) {
 		const handleEditBtnClick = () => {
 			toggleUpdating();
 		};
