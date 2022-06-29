@@ -100,7 +100,7 @@ const CommentBase = ({
 			</article>
 
 			{gettingReply ? (
-				<NewComment
+				<NewReply
 					replyingRef={replyingRef}
 					replyingToUser={user}
 				/>
