@@ -30,7 +30,7 @@ const CommentContent = ({
 		>
 			{!(replyingToUser == null) ? (
 				<>
-					<span className="replying-to">@{replyingToUser}</span>{" "}
+					<span className="replying-to">@{replyingToAuthor.username}</span>{" "}
 				</>
 			) : null}
 			<span
