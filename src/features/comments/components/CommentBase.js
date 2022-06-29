@@ -9,7 +9,7 @@ import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
 import CommentControl from "./CommentControl";
 import CommentContent from "./CommentContent";
-import NewComment from "./NewComment";
+import NewReply from "./NewReply";
 
 /**
  * Presentational component for comments (top level, and replies)
