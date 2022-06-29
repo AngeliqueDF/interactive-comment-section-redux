@@ -59,7 +59,7 @@ const CommentBase = ({
 				id={`${user.username}-${id}`}
 				className={`comment ${updating ? "updating" : ""}`}
 			>
-				<ScoreButtons id={id} replyingTo={replyingTo} score={score} />
+				<ScoreButtons id={id} score={score} />
 
 				{/* change class ? */}
 				<div className="comment-meta">
