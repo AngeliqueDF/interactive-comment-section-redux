@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../currentUser/currentUserSlice";
+import { selectUserById } from "../../users/usersSlice";
+
 const CommentContent = ({
 	authorID,
 	replyingToUser,
@@ -8,6 +10,10 @@ const CommentContent = ({
 	updating,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
+	const replyingToAuthor = useSelector((state) =>
+		selectUserById(state, replyingToUser)
+	);
+
 	// Determines whether the current user wrote the commnent being rendered
 	const byCurrentUser = currentUser.id === authorID;
 
