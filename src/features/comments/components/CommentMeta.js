@@ -1,4 +1,4 @@
-const CommentMeta = ({ user, createdAt, currentUsername }) => {
+const CommentMeta = ({ authorID, createdAt }) => {
 	return (
 		<>
 			<img
