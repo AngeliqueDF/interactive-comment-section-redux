@@ -80,8 +80,8 @@ const CommentBase = ({
 				<CommentControl
 					commentID={id}
 					deleting={deleting}
-					author={user.username}
 					toggleDeleteModal={toggleDeleteModal}
+					authorID={user}
 					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
 				/>
