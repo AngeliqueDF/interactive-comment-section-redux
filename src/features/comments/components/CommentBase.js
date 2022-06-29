@@ -74,8 +74,8 @@ const CommentBase = ({
 					updating={updating}
 					user={user}
 					content={content}
-					replyingTo={replyingTo}
 					currentUsername={currentUser.username}
+					replyingToUser={replyingToUser}
 					contentArea={contentArea}
 				/>
 
