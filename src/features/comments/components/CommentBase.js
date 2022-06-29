@@ -92,7 +92,6 @@ const CommentBase = ({
 				{updating ? (
 					<Button
 						idAttribute="update"
-						replyingTo={replyingTo}
 						content="update"
 						updating={updating}
 						onClick={(e) => console.log(e.target.dataset)}
