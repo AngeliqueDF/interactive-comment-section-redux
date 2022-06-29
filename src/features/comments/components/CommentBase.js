@@ -53,6 +53,9 @@ const CommentBase = ({
 		setDeleting(!deleting);
 	};
 
+	// Tracks the comment whose "Reply" button was clicked/tapped.
+	const [replyingToComment, setReplyingToComment] = useState(null);
+
 	return (
 		<>
 			<article
@@ -75,7 +78,6 @@ const CommentBase = ({
 				/>
 
 				<CommentControl
-					currentUsername={currentUser.username}
 					commentID={id}
 					deleting={deleting}
 					author={user.username}
