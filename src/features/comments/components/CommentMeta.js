@@ -3,12 +3,12 @@ const CommentMeta = ({ authorID, createdAt }) => {
 		<>
 			<img
 				className="comment-author-image"
-				src={user.image.png}
-				alt={`${user.username}`}
+				src={author.image.png}
+				alt={`${author.username}`}
 			/>
 			<p className="comment-author">
-				{user.username}{" "}
 				{user.username === currentUsername ? (
+				{author.username}{" "}
 					<span className="own-comment-indicator">you</span>
 				) : null}
 			</p>
