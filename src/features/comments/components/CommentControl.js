@@ -9,6 +9,7 @@ const CommentControl = ({
 	toggleDeleteModal,
 	toggleGettingReply,
 	toggleUpdating,
+	setReplyingToComment,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
 	if (deleting) {
@@ -43,6 +44,7 @@ const CommentControl = ({
 	} else {
 		const handleClick = (e) => {
 			toggleGettingReply();
+			setReplyingToComment(commentID);
 		};
 		return (
 			<div className="comment-control">

@@ -1,22 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "./../../currentUser/currentUserSlice";
 
-import { addComment } from "../commentsSlice";
+import { addReply } from "../commentsSlice";
+import { selectUsernames } from "../../users/usersSlice";
 
 import Button from "./Button";
 
-const NewComment = (props) => {
+const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
 	const currentUser = useSelector(selectCurrentUser);
+	const usernames = useSelector(selectUsernames);
+	const replyingToAuthor = usernames.find(
+		(username) => username.id === replyingToUser
+	);
 	const dispatch = useDispatch();
-
 	// If the user's information wasn't received yet, exit
 	if (!currentUser) return;
 
 	const attributes = {
 		dataRequestType: "ADD_COMMENT",
-		formClass: "new-comment",
-		placeholder: "Add a comment…",
-		btnContent: "send",
+		formClass: "new-comment reply",
+		defaultValue: `@${replyingToAuthor.username} `,
+		btnContent: "reply",
 	};
 
 	const handleSubmit = (e) => {
@@ -24,9 +28,11 @@ const NewComment = (props) => {
 		const payload = {
 			content: e.target.newContent.value,
 			user: currentUser.id,
+			replyingToUser,
+			replyingToAuthor,
+			replyingToComment,
 		};
-		dispatch(addComment(payload));
-		e.target.newContent.value = "";
+		dispatch(addReply(payload));
 	};
 
 	return (
@@ -34,7 +40,7 @@ const NewComment = (props) => {
 			<img src={currentUser.image.png} alt={currentUser.username} />
 			<textarea
 				defaultValue={attributes.defaultValue}
-				placeholder={attributes.placeholder}
+				ref={!(replyingToUser === null) ? replyingRef : null}
 				name="newContent"
 				required={true}
 			></textarea>
@@ -47,4 +53,4 @@ const NewComment = (props) => {
 	);
 };
 
-export default NewComment;
+export default NewReply;

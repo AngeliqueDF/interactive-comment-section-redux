@@ -9,7 +9,7 @@ import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
 import CommentMeta from "./CommentMeta";
 import CommentControl from "./CommentControl";
 import CommentContent from "./CommentContent";
-import NewComment from "./NewComment";
+import NewReply from "./NewReply";
 
 /**
  * Presentational component for comments (top level, and replies)
@@ -53,6 +53,9 @@ const CommentBase = ({
 		setDeleting(!deleting);
 	};
 
+	// Tracks the comment whose "Reply" button was clicked/tapped.
+	const [replyingToComment, setReplyingToComment] = useState(null);
+
 	return (
 		<>
 			<article
@@ -81,6 +84,7 @@ const CommentBase = ({
 					authorID={user}
 					toggleGettingReply={handleReplyBtnClick}
 					toggleUpdating={handleEditBtnClick}
+					setReplyingToComment={setReplyingToComment}
 				/>
 
 				{updating ? (
@@ -96,9 +100,10 @@ const CommentBase = ({
 			</article>
 
 			{gettingReply ? (
-				<NewComment
+				<NewReply
 					replyingRef={replyingRef}
 					replyingToUser={user}
+					replyingToComment={replyingToComment}
 				/>
 			) : null}
 		</>
