@@ -66,7 +66,6 @@ const CommentBase = ({
 					<CommentMeta
 						user={user}
 						createdAt={createdAt}
-						currentUsername={currentUser.username}
 					/>
 				</div>
 
