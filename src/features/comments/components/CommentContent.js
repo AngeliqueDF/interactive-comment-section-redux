@@ -19,11 +19,11 @@ const CommentContent = ({
 
 	return (
 		<div
-			// Add the .updating class to apply a border to the text area, visible when it loses focus
+			// Add the .updating class to apply a border to the text area. The border makes it visible when it loses focus so that the user knows they can still enter text in that area.
 			className={`comment-content ${
 				byCurrentUser && updating ? "updating" : ""
 			}`}
-			// Check the user is the author of the comment and has clicked on edit button before making the div editable
+			// Check the user is the author of the comment **and** has clicked on edit button before making the div editable
 			contentEditable={byCurrentUser && updating ? true : false}
 			// remove React error
 			suppressContentEditableWarning={byCurrentUser ? true : null}
@@ -34,6 +34,7 @@ const CommentContent = ({
 				</>
 			) : null}
 			<span
+				// Apply focus if the user has started updating the comment
 				ref={byCurrentUser && updating ? contentArea : null}
 				className="content"
 			>
