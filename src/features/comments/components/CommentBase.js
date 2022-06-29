@@ -106,7 +106,7 @@ const CommentBase = ({
 				<NewComment
 					replyingRef={replyingRef}
 					currentUser={currentUser}
-					replyingTo={user.username}
+					replyingToUser={user}
 				/>
 			) : null}
 		</>
