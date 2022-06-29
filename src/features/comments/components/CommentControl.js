@@ -1,7 +1,6 @@
 import DeleteCommentModal from "./DeleteCommentModal";
 
 const CommentControl = ({
-	currentUsername,
 	author,
 	commentID,
 	deleting,
