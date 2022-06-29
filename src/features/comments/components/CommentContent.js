@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../currentUser/currentUserSlice";
 const CommentContent = ({
 	authorID,
 	replyingToUser,
@@ -5,6 +7,7 @@ const CommentContent = ({
 	contentArea,
 	updating,
 }) => {
+	const currentUser = useSelector(selectCurrentUser);
 	return (
 		<div
 			// Add the .updating class to apply a border to the text area, visible when it loses focus
