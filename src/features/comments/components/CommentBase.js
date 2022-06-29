@@ -68,7 +68,7 @@ const CommentBase = ({
 
 				<CommentContent
 					updating={updating}
-					user={user}
+					authorID={user}
 					content={content}
 					replyingToUser={replyingToUser}
 					contentArea={contentArea}
