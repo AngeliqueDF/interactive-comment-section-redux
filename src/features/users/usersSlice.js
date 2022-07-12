@@ -44,4 +44,14 @@ export const usersSlice = createSlice({
 export const selectUserById = (state, userID) =>
 	state.users.find((user) => user.id === userID);
 
+export const selectUsernames = (state) => {
+	return state.users.map((user) => {
+		const object = {
+			id: user.id,
+			username: user.username,
+		};
+		return object;
+	});
+};
+
 export default usersSlice.reducer;

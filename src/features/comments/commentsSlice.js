@@ -80,4 +80,23 @@ export const commentsSlice = createSlice({
 	},
 });
 
+// Creates the comments array used in the store. Other slices of the state are reference by their id.
+export const selectComments = (state) => {
+	return state.comments.map((comment) => {
+		return {
+			...comment,
+			// populate the replies array with the full information of each comment
+			replies: comment.replies
+				? comment.replies.map((replyID) =>
+						state.comments.find((comment) => comment.id === replyID)
+				  )
+				: [],
+			// the id of the user who wrote the comment or `null`
+			replyingToUser: comment.replyingToUser
+				? state.users.find((user) => user.id === comment.replyingToUser)
+				: comment.replyingToUser,
+		};
+	});
+};
+
 export default commentsSlice.reducer;
