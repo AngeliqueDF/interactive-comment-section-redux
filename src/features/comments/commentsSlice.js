@@ -74,7 +74,7 @@ export const commentsSlice = createSlice({
 			const newComment = {
 				...action.payload,
 				id: randomID(),
-				createdAt: new Date().toDateString(),
+				createdAt: new Date().getTime(),
 				score: 0,
 				replies: [],
 				replyingToUser: null,
