@@ -27,6 +27,14 @@ module.exports = {
 		element.selectionStart = element.value.length;
 	},
 	randomID: () => Number((Math.random() * 1000000).toFixed(0)),
+	/**
+	 * Trims the comment to only keep the actual content. Avoids duplicated "@username "
+	 */
+	trimContent: (username, content) => {
+		const usernameLength = username.length + 2;
+		const trimContent = content.substring(usernameLength, content.length);
+		return trimContent;
+	},
 	formatDate: (date) => {
 		const relative = new Intl.RelativeTimeFormat("en-GB", { numeric: "auto" });
 		const then = Math.floor(new Date(date));
