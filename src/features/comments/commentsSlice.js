@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { randomID } from "../../utils/helper";
+import { randomID, trimContent } from "../../utils/helper";
 
 export const initialState = [
 	{
@@ -84,8 +84,54 @@ export const commentsSlice = createSlice({
 
 			state.push(newComment);
 		},
-		deleteComment: () => {
-			// DELETE  comment
+		addReply: (state, action) => {
+			const trimmedContent = trimContent(
+				action.payload.replyingToAuthor.username,
+				action.payload.content
+			);
+			// If the new comment's content only contains "@" followed by a username, it means the comment is actually empty. In that case, we stop executing the code.
+			if (!trimmedContent.length) return;
+
+			/**
+			 * Finds the root comment parent of a given comment. Needed for TopLevelComment to work correctly.
+			 */
+			const findRootComment = (id) => {
+				// Find a comment in the state by its id.
+				let currentComment = state.find((comment) => comment.id === id);
+
+				// If the current comment is a reply to another comment...
+				if (currentComment.replyingToComment != null) {
+					// ...store the other comment's id in currentComment.
+					currentComment = currentComment.replyingToComment;
+					// Then call the function again
+					return findRootComment(currentComment);
+				}
+
+				// Once we reach a comment that has null in replyingToComment, return its id.
+				return currentComment.id;
+			};
+			const rootComment = findRootComment(action.payload.replyingToComment);
+
+			const newComment = {
+				...action.payload,
+				id: randomID(),
+				createdAt: new Date().getTime(),
+				score: 0,
+				replies: [],
+				replyingToUser: action.payload.replyingToUser,
+				content: trimmedContent,
+				replyingToComment: rootComment,
+			};
+
+			// Add the comment to the state
+			state.push(newComment);
+
+			const repliedToComment = state.find(
+				(comment) =>
+					findRootComment(action.payload.replyingToComment) === comment.id
+			);
+			// Finally, to display the newly added comment, push it to the list of replies of its root parent comment.
+			repliedToComment.replies.push(newComment.id);
 		},
 		updateComment: () => {
 			// PUT comment
@@ -113,5 +159,5 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { addComment } = commentsSlice.actions;
+export const { addComment, addReply } = commentsSlice.actions;
 export default commentsSlice.reducer;
