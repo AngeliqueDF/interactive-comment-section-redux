@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// TODO add action when replying to comment, to conditionnally display NewReply
-
-const initialState = [
+export const initialState = [
 	{
 		id: 0,
 		content:
