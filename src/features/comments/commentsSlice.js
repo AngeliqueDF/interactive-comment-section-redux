@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { randomID } from "../../utils/helper";
 
 export const initialState = [
 	{
@@ -66,9 +67,22 @@ export const commentsSlice = createSlice({
 	// TODO Toggle getting a reply (frontend only)
 
 	reducers: {
-		addComment: () => {
-			// TODO add comment
-			// // POST a reply
+		addComment: (state, action) => {
+			// if the content is empty, exit
+			if (!action.payload.content.length) return;
+
+			const newComment = {
+				...action.payload,
+				id: randomID(),
+				createdAt: new Date().toDateString(),
+				score: 0,
+				replies: [],
+				replyingToUser: null,
+				content: action.payload.content,
+				replyingToComment: null,
+			};
+
+			state.push(newComment);
 		},
 		deleteComment: () => {
 			// DELETE  comment
@@ -99,4 +113,5 @@ export const selectComments = (state) => {
 	});
 };
 
+export const { addComment } = commentsSlice.actions;
 export default commentsSlice.reducer;
