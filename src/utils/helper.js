@@ -26,4 +26,5 @@ module.exports = {
 		const element = document.querySelector(querySelector);
 		element.selectionStart = element.value.length;
 	},
+	randomID: () => Number((Math.random() * 1000000).toFixed(0)),
 };
