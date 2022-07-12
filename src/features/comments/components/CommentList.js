@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { selectComments } from "./../commentsSlice";
 
@@ -12,7 +13,7 @@ const CommentList = () => {
 					if (comment.replyingToUser === null) {
 						return <TopLevelComment key={comment.id} comment={comment} />;
 					}
-					return;
+					return <React.Fragment key={comment.id}></React.Fragment>;
 				})}
 		</>
 	);
