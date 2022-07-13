@@ -110,7 +110,7 @@ export const commentsSlice = createSlice({
 				// Once we reach a comment that has null in replyingToComment, return its id.
 				return currentComment.id;
 			};
-			const rootComment = findRootComment(action.payload.replyingToComment);
+			const rootCommentID = findRootComment(action.payload.replyingToComment);
 
 			const newComment = {
 				...action.payload,
@@ -120,18 +120,15 @@ export const commentsSlice = createSlice({
 				replies: [],
 				replyingToUser: action.payload.replyingToUser,
 				content: trimmedContent,
-				replyingToComment: rootComment,
+				replyingToComment: action.payload.replyingToComment,
 			};
 
 			// Add the comment to the state
 			state.push(newComment);
 
-			const repliedToComment = state.find(
-				(comment) =>
-					findRootComment(action.payload.replyingToComment) === comment.id
-			);
+			const rootComment = state.find((comment) => comment.id === rootCommentID);
 			// Finally, to display the newly added comment, push it to the list of replies of its root parent comment.
-			repliedToComment.replies.push(newComment.id);
+			rootComment.replies.push(newComment.id);
 		},
 		updateComment: () => {
 			// PUT comment
