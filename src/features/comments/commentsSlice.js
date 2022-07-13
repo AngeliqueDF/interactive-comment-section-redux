@@ -110,7 +110,7 @@ export const commentsSlice = createSlice({
 				// Once we reach a comment that has null in replyingToComment, return its id.
 				return currentComment.id;
 			};
-			const rootComment = findRootComment(action.payload.replyingToComment);
+			const rootCommentID = findRootComment(action.payload.replyingToComment);
 
 			const newComment = {
 				...action.payload,
@@ -120,7 +120,6 @@ export const commentsSlice = createSlice({
 				replies: [],
 				replyingToUser: action.payload.replyingToUser,
 				content: trimmedContent,
-				replyingToComment: rootComment,
 			};
 
 			// Add the comment to the state
