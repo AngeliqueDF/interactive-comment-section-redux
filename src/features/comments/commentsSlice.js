@@ -120,6 +120,7 @@ export const commentsSlice = createSlice({
 				replies: [],
 				replyingToUser: action.payload.replyingToUser,
 				content: trimmedContent,
+				replyingToComment: action.payload.replyingToComment,
 			};
 
 			// Add the comment to the state
