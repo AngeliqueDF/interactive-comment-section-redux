@@ -162,6 +162,11 @@ export const commentsSlice = createSlice({
 			const deleteIndex = state.findIndex((comment) => comment.id === deleteID);
 			state.splice(deleteIndex, 1);
 		},
+		updateComment: (state, action) => {
+			const updateID = state.findIndex(
+				(comment) => comment.id === action.payload.id
+			);
+			state[updateID].content = action.payload.newContent;
 		},
 		handleCommentChange: () => {},
 	},
@@ -186,5 +191,7 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { addComment, addReply, deleteComment } = commentsSlice.actions;
+export const { addComment, addReply, deleteComment, updateComment } =
+	commentsSlice.actions;
+
 export default commentsSlice.reducer;
