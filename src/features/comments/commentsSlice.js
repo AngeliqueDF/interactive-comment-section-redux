@@ -130,8 +130,38 @@ export const commentsSlice = createSlice({
 			// Finally, to display the newly added comment, push it to the list of replies of its root parent comment.
 			rootComment.replies.push(newComment.id);
 		},
-		updateComment: () => {
-			// PUT comment
+		deleteComment: (state, action) => {
+			const deleteID = action.payload.commentID;
+			let commentToDelete = state.find((comment) => comment.id === deleteID);
+
+			// If the comment being deleted is a reply, it has a root parent. Firstly, check rootComment is a valid id (neither null nor undefined)
+			if (!(commentToDelete.replyingToComment == null)) {
+				const findRootCommentID = (id) => {
+					let currentComment = state.find((comment) => comment.id === id);
+					if (currentComment.replyingToComment === null) {
+						return currentComment.id;
+					} else {
+						const currentCommentID = currentComment.replyingToComment;
+						return findRootCommentID(currentCommentID);
+					}
+				};
+				const rootCommentID = findRootCommentID(deleteID);
+
+				// Find the root comment using its id
+				const rootComment = state.find(
+					(comment) => comment.id === rootCommentID
+				);
+
+				// Remove the id of the comment being deleted from the replies array of its root comment
+				rootComment.replies.splice(
+					rootComment.replies.findIndex((id) => id === deleteID)
+				);
+			}
+
+			// Remove the comment from the comments in the state
+			const deleteIndex = state.findIndex((comment) => comment.id === deleteID);
+			state.splice(deleteIndex, 1);
+		},
 		},
 		handleCommentChange: () => {},
 	},
@@ -156,5 +186,5 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { addComment, addReply } = commentsSlice.actions;
+export const { addComment, addReply, deleteComment } = commentsSlice.actions;
 export default commentsSlice.reducer;
