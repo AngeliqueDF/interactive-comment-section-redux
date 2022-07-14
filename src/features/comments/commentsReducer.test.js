@@ -95,14 +95,7 @@ describe("commentsReducer", () => {
 				user: 3,
 				replies: [],
 				replyingToUser: ANSWERING_TO_USER_ID,
-				replyingToAuthor: {
-					id: 1,
-					image: {
-						png: "./images/avatars/image-maxblagun.png",
-						webp: "./images/avatars/image-maxblagun.webp",
-					},
-					username: ANSWERING_TO_USERNAME,
-				},
+				replyingToAuthor: ANSWERING_TO_USERNAME,
 				replyingToComment: ROOT_COMMENT_ID,
 			},
 		};
