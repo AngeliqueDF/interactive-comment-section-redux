@@ -9,7 +9,7 @@ import Button from "./Button";
 const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
 	const currentUser = useSelector(selectCurrentUser);
 	const usernames = useSelector(selectUsernames);
-	const replyingToAuthor = usernames.find(
+	const { username: replyingToAuthor } = usernames.find(
 		(username) => username.id === replyingToUser
 	);
 	const dispatch = useDispatch();
