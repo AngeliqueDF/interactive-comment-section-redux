@@ -154,4 +154,37 @@ describe("commentsReducer", () => {
 		expect(newState.findIndex((comment) => comment.id === 1)).toBe(-1);
 	});
 
+	test("Updates the content of a comment with comments/updateComment", () => {
+		const state = [
+			{
+				id: 1,
+				content:
+					"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+				createdAt: "1 month ago",
+				score: 12,
+				user: {
+					image: {
+						png: "./images/avatars/image-amyrobson.png",
+						webp: "./images/avatars/image-amyrobson.webp",
+					},
+					username: "amyrobson",
+				},
+				replies: [],
+				replyingToUser: null,
+				replyingToComment: null,
+			},
+		];
+
+		const action = {
+			type: "comments/updateComment",
+			payload: {
+				id: 1,
+				newContent: "new content",
+			},
+		};
+
+		const newState = commentsReducer(state, action);
+		expect(newState).toHaveLength(1);
+		expect(newState[0].content).toEqual(action.payload.newContent);
+	});
 });
