@@ -19,7 +19,7 @@ const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
 	const attributes = {
 		dataRequestType: "ADD_COMMENT",
 		formClass: "new-comment reply",
-		defaultValue: `@${replyingToAuthor.username} `,
+		defaultValue: `@${replyingToAuthor} `,
 		btnContent: "reply",
 	};
 
