@@ -86,7 +86,7 @@ export const commentsSlice = createSlice({
 		},
 		addReply: (state, action) => {
 			const trimmedContent = trimContent(
-				action.payload.replyingToAuthor.username,
+				action.payload.replyingToAuthor,
 				action.payload.content
 			);
 			// If the new comment's content only contains "@" followed by a username, it means the comment is actually empty. In that case, we stop executing the code.
