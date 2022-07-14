@@ -127,4 +127,31 @@ describe("commentsReducer", () => {
 		jest.useRealTimers();
 	});
 
+	test("Removes a comment from the state with comments/deleteComment", () => {
+		const state = [
+			{
+				id: 1,
+				content:
+					"Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
+				createdAt: "2 weeks ago",
+				score: 5,
+				user: 1,
+				replies: [],
+				replyingToUser: null,
+				replyingToComment: null,
+			},
+		];
+
+		const action = {
+			type: "comments/deleteComment",
+			payload: {
+				commentID: 1,
+			},
+		};
+
+		const newState = commentsReducer(state, action);
+		expect(newState).toHaveLength(0);
+		expect(newState.findIndex((comment) => comment.id === 1)).toBe(-1);
+	});
+
 });
