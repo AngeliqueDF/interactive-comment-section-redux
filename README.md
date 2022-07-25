@@ -20,8 +20,8 @@ _A comment section with its own backend._
 
 ## Features
 
-- Allows users to participate in a conversation (CRUD).
-- Restrict certain interactions to the current user on the frontend.
+- Allows users to participate in a conversation (CRUD operations on comments).
+- Authorize certain user interactions.
 - Responsive UI.
 
 ## Author
