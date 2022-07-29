@@ -1,6 +1,29 @@
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../currentUser/currentUserSlice";
 
+// Import icons
+import deleteIcon from "./../../../images/icon-delete.svg";
+import editIcon from "./../../../images/icon-edit.svg";
+import replyIcon from "./../../../images/icon-reply.svg";
+
+/**
+ * Presentational comment to display button element.
+ */
+const ControlButton = ({
+	onClickFunction,
+	className,
+	textContent,
+	iconImage,
+}) => (
+	<button
+		style={{ backgroundImage: iconImage }}
+		onClick={() => onClickFunction()}
+		className={className}
+	>
+		{textContent}
+	</button>
+);
+
 const CommentControl = ({
 	authorID,
 	commentID,
@@ -10,39 +33,46 @@ const CommentControl = ({
 	setReplyingToComment,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
-	if (currentUser.id === authorID) {
-		const handleEditBtnClick = () => {
-			toggleUpdating();
-		};
-		const handleDeleteBtnClick = () => {
-			toggleDeleteModal(commentID);
-			console.log(commentID);
-		};
-		return (
-			<div className="comment-control">
-				{/* TODO onclick, open modal */}
-				<button onClick={handleDeleteBtnClick} className="delete-button">
-					Delete
-				</button>
-				{/* TODO onclick, change gettingUpdated state and make content editable */}
-				<button onClick={handleEditBtnClick} className="edit-button">
-					Edit
-				</button>
-			</div>
-		);
-	} else {
-		const handleClick = (e) => {
-			toggleGettingReply();
-			setReplyingToComment(commentID);
-		};
-		return (
-			<div className="comment-control">
-				<button onClick={handleClick} className="reply-button">
-					Reply
-				</button>
-			</div>
-		);
-	}
+
+	const handleEditClick = () => {
+		toggleUpdating();
+	};
+	const handleDeleteClick = () => {
+		toggleDeleteModal();
+	};
+
+	const handleReplyClick = (e) => {
+		toggleGettingReply();
+		setReplyingToComment(commentID);
+	};
+
+	return (
+		<div className="comment-control">
+			{currentUser.id === authorID ? (
+				<>
+					<ControlButton
+						onClickFunction={handleDeleteClick}
+						className={"delete-button"}
+						textContent={"Delete"}
+						iconImage={deleteIcon}
+					/>
+					<ControlButton
+						onClickFunction={handleEditClick}
+						className={"edit-button"}
+						textContent={"Edit"}
+						iconImage={editIcon}
+					/>
+				</>
+			) : (
+				<ControlButton
+					onClickFunction={handleReplyClick}
+					className={"reply-button"}
+					textContent={"Reply"}
+					iconImage={replyIcon}
+				/>
+			)}
+		</div>
+	);
 };
 
 export default CommentControl;

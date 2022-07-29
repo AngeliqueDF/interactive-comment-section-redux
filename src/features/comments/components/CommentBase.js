@@ -1,4 +1,8 @@
 import { useRef, useState, useEffect } from "react";
+
+import { useDispatch } from "react-redux";
+import { updateComment } from "../commentsSlice";
+
 import {
 	moveCaretToContentEditableEnd,
 	moveCaretToTextareaEnd,
@@ -18,6 +22,7 @@ import DeleteCommentModal from "./DeleteCommentModal";
 const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingToUser, user },
 }) => {
+	const dispatch = useDispatch();
 	const [gettingReply, setGettingReply] = useState(false);
 	const handleReplyBtnClick = () => {
 		setGettingReply(!gettingReply);
@@ -34,9 +39,16 @@ const CommentBase = ({
 	});
 
 	const [updating, setUpdating] = useState(false);
-	const handleEditBtnClick = () => {
+	const toggleUpdating = () => {
 		setUpdating(!updating);
 	};
+	const handleUpdateClick = () => {
+		dispatch(
+			updateComment({ id, newContent: contentArea.current.textContent })
+		);
+		toggleUpdating();
+	};
+
 	const contentArea = useRef(null);
 	useEffect(() => {
 		if (contentArea.current) {
@@ -84,7 +96,7 @@ const CommentBase = ({
 					toggleDeleteModal={toggleDeleteModal}
 					authorID={user}
 					toggleGettingReply={handleReplyBtnClick}
-					toggleUpdating={handleEditBtnClick}
+					toggleUpdating={toggleUpdating}
 					setReplyingToComment={setReplyingToComment}
 				/>
 
@@ -92,7 +104,7 @@ const CommentBase = ({
 					<Button
 						idAttribute="update"
 						content="update"
-						onClick={(e) => console.log(e.target.dataset)}
+						onClick={handleUpdateClick}
 						dataRequestType="UPDATE_CONTENT"
 					/>
 				) : (
