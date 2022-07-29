@@ -1,4 +1,4 @@
-import CommentBase from "./CommentBase";
+import CommentBase from "./CommentBase/CommentBaseContainer";
 
 const Replies = ({ replies }) => {
 	return (
