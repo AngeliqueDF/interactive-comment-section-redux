@@ -26,6 +26,7 @@ module.exports = {
 		const element = document.querySelector(querySelector);
 		element.selectionStart = element.value.length;
 	},
+
 	randomID: () => Number((Math.random() * 1000000).toFixed(0)),
 	/**
 	 * Trims the comment to only keep the actual content. Avoids duplicated "@username "
@@ -42,8 +43,6 @@ module.exports = {
 		const days = (then - now) / 86400000;
 		const getRelativeDate = (formatUnit, unitInDays = 1) =>
 			relative.format(Math.trunc(days / unitInDays), formatUnit);
-
-		console.log("days %d", days);
 
 		if (days <= -365) {
 			console.log(relative.format(Math.trunc(days / -365), "year"));
