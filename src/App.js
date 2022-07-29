@@ -5,7 +5,6 @@ import CommentList from "./features/comments/components/CommentList";
 import NewComment from "./features/comments/components/NewComment";
 
 function App() {
-	// TODO fetch all comments in useEffect
 	return (
 		<main>
 			<CommentList />
