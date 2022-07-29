@@ -6,7 +6,12 @@ import { selectUsernames } from "../../users/usersSlice";
 
 import Button from "./Button";
 
-const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
+const NewReply = ({
+	toggleGettingReply,
+	replyingToUser,
+	replyingRef,
+	replyingToComment,
+}) => {
 	const currentUser = useSelector(selectCurrentUser);
 	const usernames = useSelector(selectUsernames);
 	const { username: replyingToAuthor } = usernames.find(
@@ -32,6 +37,9 @@ const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
 			replyingToAuthor,
 			replyingToComment,
 		};
+		// Close the form when the user sent a reply
+		toggleGettingReply();
+		e.target.newContent.value = "";
 		dispatch(addReply(payload));
 	};
 
