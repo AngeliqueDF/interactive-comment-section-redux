@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateComment } from "../commentsSlice";
 
 import {
@@ -19,10 +19,17 @@ import DeleteCommentModal from "./DeleteCommentModal";
 /**
  * Presentational component for comments (top level, and replies)
  */
+import { selectUsernames } from "../../users/usersSlice";
+
 const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingToUser, user },
 }) => {
 	const dispatch = useDispatch();
+	const allUsernames = useSelector(selectUsernames);
+	const { username: authorUsername } = allUsernames.find(
+		(userStored) => userStored.id === user
+	);
+
 	const [gettingReply, setGettingReply] = useState(false);
 	const handleReplyBtnClick = () => {
 		setGettingReply(!gettingReply);
@@ -31,9 +38,8 @@ const CommentBase = ({
 	useEffect(() => {
 		if (replyingRef.current) {
 			replyingRef.current.focus();
-
-			// From the comment, find the its form.reply sibling element and select this sibling's textarea child element
-			const textAreaSelector = `#${user.username}-${id} + .reply > textarea`;
+			// From the comment referenced, find its "form.reply" sibling element and select this sibling's "textarea" child element
+			const textAreaSelector = `#${authorUsername}-${id} + .reply > textarea`;
 			moveCaretToTextareaEnd(textAreaSelector);
 		}
 	});
@@ -72,12 +78,11 @@ const CommentBase = ({
 	return (
 		<>
 			<article
-				id={`${user.username}-${id}`}
-				className={`comment ${updating ? "updating" : ""}`}
+				id={`${authorUsername}-${id}`}
+				className={`comment${updating ? " updating" : ""}`}
 			>
 				<ScoreButtons id={id} score={score} />
 
-				{/* change class ? */}
 				<div className="comment-meta">
 					<CommentMeta authorID={user} createdAt={createdAt} />
 				</div>
