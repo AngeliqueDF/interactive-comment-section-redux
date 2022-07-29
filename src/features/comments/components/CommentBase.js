@@ -10,6 +10,7 @@ import CommentMeta from "./CommentMeta";
 import CommentControl from "./CommentControl";
 import CommentContent from "./CommentContent";
 import NewReply from "./NewReply";
+import DeleteCommentModal from "./DeleteCommentModal";
 
 /**
  * Presentational component for comments (top level, and replies)
@@ -49,6 +50,7 @@ const CommentBase = ({
 
 	const [deleting, setDeleting] = useState(false);
 	const toggleDeleteModal = () => {
+		document.querySelector("main").classList.toggle("modal-open");
 		setDeleting(!deleting);
 	};
 
@@ -103,6 +105,13 @@ const CommentBase = ({
 					replyingRef={replyingRef}
 					replyingToUser={user}
 					replyingToComment={replyingToComment}
+				/>
+			) : null}
+
+			{deleting ? (
+				<DeleteCommentModal
+					commentID={id}
+					toggleDeleteModal={toggleDeleteModal}
 				/>
 			) : null}
 		</>

@@ -1,6 +1,13 @@
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../commentsSlice";
+
 const DeleteCommentModal = ({ toggleDeleteModal, commentID }) => {
+	const dispatch = useDispatch();
 	const handleCancelBtnClick = () => {
-		document.querySelector("main").classList.remove("modal-open");
+		toggleDeleteModal();
+	};
+	const handleDeleteBtnClick = () => {
+		dispatch(deleteComment({ commentID }));
 		toggleDeleteModal();
 	};
 	return (
@@ -17,9 +24,7 @@ const DeleteCommentModal = ({ toggleDeleteModal, commentID }) => {
 				</button>
 
 				{/* TODO send DELETE request with commentID on click */}
-				<button
-					className="modal-confirm"
-				>
+				<button onClick={handleDeleteBtnClick} className="modal-confirm">
 					Yes, delete
 				</button>
 			</div>
