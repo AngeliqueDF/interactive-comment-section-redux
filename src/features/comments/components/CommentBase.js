@@ -34,7 +34,7 @@ const CommentBase = ({
 	});
 
 	const [updating, setUpdating] = useState(false);
-	const handleEditBtnClick = () => {
+	const toggleUpdating = () => {
 		setUpdating(!updating);
 	};
 	const contentArea = useRef(null);
@@ -84,7 +84,7 @@ const CommentBase = ({
 					toggleDeleteModal={toggleDeleteModal}
 					authorID={user}
 					toggleGettingReply={handleReplyBtnClick}
-					toggleUpdating={handleEditBtnClick}
+					toggleUpdating={toggleUpdating}
 					setReplyingToComment={setReplyingToComment}
 				/>
 
