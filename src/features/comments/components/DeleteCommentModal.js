@@ -1,6 +1,5 @@
 const DeleteCommentModal = ({ toggleDeleteModal, commentID }) => {
 	const handleCancelBtnClick = () => {
-		document.querySelector("main").classList.remove("modal-open");
 		toggleDeleteModal();
 	};
 	return (

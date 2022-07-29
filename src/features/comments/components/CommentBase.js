@@ -49,6 +49,7 @@ const CommentBase = ({
 
 	const [deleting, setDeleting] = useState(false);
 	const toggleDeleteModal = () => {
+		document.querySelector("main").classList.toggle("modal-open");
 		setDeleting(!deleting);
 	};
 
