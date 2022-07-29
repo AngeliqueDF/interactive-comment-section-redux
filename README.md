@@ -1,4 +1,4 @@
-# Interactive comment section
+# Interactive comment section, PERN stack app
 
 ![Screenshot of the Interactive comment section](./src/images/screenshot-desktop.png)
 
@@ -9,6 +9,11 @@
 <img src="./src/images/logo-html5.svg">
 <img src="./src/images/logo-css3.svg">
 </div>
+
+## Links
+
+- [GitHub repository](https://github.com/AngeliqueDF/interactive-comment-section-redux)
+- [Live demo](https://jazzy-speculoos-f7da49.netlify.app/)
 
 ## Overview
 
