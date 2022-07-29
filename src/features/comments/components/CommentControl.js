@@ -33,6 +33,30 @@ const CommentControl = ({
 	setReplyingToComment,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
+	return (
+		<div className="comment-control">
+			{currentUser.id === authorID ? (
+				<>
+					<ControlButton
+						className={"delete-button"}
+						textContent={"Delete"}
+						iconImage={deleteIcon}
+					/>
+					<ControlButton
+						className={"edit-button"}
+						textContent={"Edit"}
+						iconImage={editIcon}
+					/>
+				</>
+			) : (
+				<ControlButton
+					className={"reply-button"}
+					textContent={"Reply"}
+					iconImage={replyIcon}
+				/>
+			)}
+		</div>
+	);
 };
 
 export default CommentControl;
