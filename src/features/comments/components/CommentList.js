@@ -9,12 +9,14 @@ const CommentList = () => {
 	return (
 		<>
 			{comments &&
-				comments.map((comment) => {
-					if (comment.replyingToUser === null) {
-						return <TopLevelComment key={comment.id} comment={comment} />;
-					}
-					return <React.Fragment key={comment.id}></React.Fragment>;
-				})}
+				[...comments]
+					.sort((a, b) => b.score - a.score)
+					.map((comment) => {
+						if (comment.replyingToUser === null) {
+							return <TopLevelComment key={comment.id} comment={comment} />;
+						}
+						return <React.Fragment key={comment.id}></React.Fragment>;
+					})}
 		</>
 	);
 };
