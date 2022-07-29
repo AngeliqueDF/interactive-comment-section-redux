@@ -1,25 +1,22 @@
 import { useRef, useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateComment } from "../commentsSlice";
+import { updateComment } from "../../commentsSlice";
 
 import {
 	moveCaretToContentEditableEnd,
 	moveCaretToTextareaEnd,
-} from "../../../utils/helper";
+} from "../../../../utils/helper";
 
-import Button from "./Button";
-import ScoreButtons from "../../scoreButtons/components/ScoreButtons";
-import CommentMeta from "./CommentMeta";
-import CommentControl from "./CommentControl";
-import CommentContent from "./CommentContent";
-import NewReply from "./NewReply";
-import DeleteCommentModal from "./DeleteCommentModal";
+import Button from "../Button";
+import ScoreButtons from "../../../scoreButtons/components/ScoreButtons";
+import CommentMeta from "../CommentMeta";
+import CommentControl from "../CommentControl";
+import CommentContent from "../CommentContent";
+import NewReply from "../NewReply";
+import DeleteCommentModal from "../DeleteCommentModal";
 
-/**
- * Presentational component for comments (top level, and replies)
- */
-import { selectUsernames } from "../../users/usersSlice";
+import { selectUsernames } from "../../../users/usersSlice";
 
 const CommentBase = ({
 	comment: { id, content, createdAt, score, replyingToUser, user },
@@ -30,6 +27,9 @@ const CommentBase = ({
 		(userStored) => userStored.id === user
 	);
 
+	// Stores the id of the comment whose "Reply" button was clicked/tapped.
+	const [replyingToComment, setReplyingToComment] = useState(null);
+	// Used to conditionnaly render NewReply when the comment is receiving an answer
 	const [gettingReply, setGettingReply] = useState(false);
 	const handleReplyBtnClick = () => {
 		setGettingReply(!gettingReply);
@@ -71,9 +71,6 @@ const CommentBase = ({
 		document.querySelector("main").classList.toggle("modal-open");
 		setDeleting(!deleting);
 	};
-
-	// Tracks the comment whose "Reply" button was clicked/tapped.
-	const [replyingToComment, setReplyingToComment] = useState(null);
 
 	return (
 		<>
@@ -119,6 +116,7 @@ const CommentBase = ({
 
 			{gettingReply ? (
 				<NewReply
+					toggleGettingReply={handleReplyBtnClick}
 					replyingRef={replyingRef}
 					replyingToUser={user}
 					replyingToComment={replyingToComment}
