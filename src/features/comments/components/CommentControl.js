@@ -33,16 +33,31 @@ const CommentControl = ({
 	setReplyingToComment,
 }) => {
 	const currentUser = useSelector(selectCurrentUser);
+
+	const handleEditClick = () => {
+		toggleUpdating();
+	};
+	const handleDeleteClick = () => {
+		toggleDeleteModal();
+	};
+
+	const handleReplyClick = (e) => {
+		toggleGettingReply();
+		setReplyingToComment(commentID);
+	};
+
 	return (
 		<div className="comment-control">
 			{currentUser.id === authorID ? (
 				<>
 					<ControlButton
+						onClickFunction={handleDeleteClick}
 						className={"delete-button"}
 						textContent={"Delete"}
 						iconImage={deleteIcon}
 					/>
 					<ControlButton
+						onClickFunction={handleEditClick}
 						className={"edit-button"}
 						textContent={"Edit"}
 						iconImage={editIcon}
@@ -50,6 +65,7 @@ const CommentControl = ({
 				</>
 			) : (
 				<ControlButton
+					onClickFunction={handleReplyClick}
 					className={"reply-button"}
 					textContent={"Reply"}
 					iconImage={replyIcon}
