@@ -63,9 +63,6 @@ export const fetchComments = createAsyncThunk(
 export const commentsSlice = createSlice({
 	name: "comments",
 	initialState,
-
-	// TODO Toggle getting a reply (frontend only)
-
 	reducers: {
 		addComment: (state, action) => {
 			// if the content is empty, exit
@@ -168,10 +165,8 @@ export const commentsSlice = createSlice({
 			);
 			state[updateID].content = action.payload.newContent;
 		},
-		handleCommentChange: () => {},
 	},
 });
-
 // Creates the comments array used in the store. Other slices of the state are reference by their id.
 export const selectComments = (state) => {
 	return state.comments.map((comment) => {
