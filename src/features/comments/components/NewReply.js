@@ -6,7 +6,12 @@ import { selectUsernames } from "../../users/usersSlice";
 
 import Button from "./Button";
 
-const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
+const NewReply = ({
+	toggleGettingReply,
+	replyingToUser,
+	replyingRef,
+	replyingToComment,
+}) => {
 	const currentUser = useSelector(selectCurrentUser);
 	const usernames = useSelector(selectUsernames);
 	const { username: replyingToAuthor } = usernames.find(
@@ -29,9 +34,13 @@ const NewReply = ({ replyingToUser, replyingRef, replyingToComment }) => {
 			content: e.target.newContent.value,
 			user: currentUser.id,
 			replyingToUser,
+			// The replyingToAuthor string is included in the payload so that we can remove it from the content saved in the state and in the database. Also avoids having duplicate '@username' string when updating the component.
 			replyingToAuthor,
 			replyingToComment,
 		};
+		// Close the form when the user sent a reply
+		toggleGettingReply();
+		e.target.newContent.value = "";
 		dispatch(addReply(payload));
 	};
 
