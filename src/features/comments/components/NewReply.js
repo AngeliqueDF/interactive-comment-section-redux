@@ -34,6 +34,7 @@ const NewReply = ({
 			content: e.target.newContent.value,
 			user: currentUser.id,
 			replyingToUser,
+			// The replyingToAuthor string is included in the payload so that we can remove it from the content saved in the state and in the database. Also avoids having duplicate '@username' string when updating the component.
 			replyingToAuthor,
 			replyingToComment,
 		};
