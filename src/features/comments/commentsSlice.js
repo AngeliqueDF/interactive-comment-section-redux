@@ -23,6 +23,7 @@ export const initialState = [
 		replies: [2, 3],
 		replyingToUser: null,
 		replyingToComment: null,
+		voteGiven: "increment",
 	},
 	{
 		id: 2,
@@ -34,6 +35,7 @@ export const initialState = [
 		replies: [3],
 		replyingToUser: 1,
 		replyingToComment: 1,
+		voteGiven: "decrement",
 	},
 	{
 		id: 3,
@@ -45,6 +47,7 @@ export const initialState = [
 		replies: [],
 		replyingToUser: 2,
 		replyingToComment: 2,
+		voteGiven: "increment",
 	},
 ];
 
