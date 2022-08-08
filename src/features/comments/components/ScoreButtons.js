@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { incrementVote } from "../commentsSlice";
+import { incrementVote, decrementVote } from "../commentsSlice";
 
 const VoteButton = ({ voteType, voteGiven, content, clickFunction }) => {
 	return (
@@ -26,6 +26,10 @@ const ScoreButtons = ({ voteGiven, id, score }) => {
 		dispatch(incrementVote({ id }));
 	};
 
+	const removeVote = (e) => {
+		dispatch(decrementVote({ id }));
+	};
+
 	return (
 		<div className="score-buttons">
 			<VoteButton
@@ -49,6 +53,7 @@ const ScoreButtons = ({ voteGiven, id, score }) => {
 				voteGiven={voteGiven}
 				voteType="decrement"
 				content="-"
+				clickFunction={removeVote}
 			/>
 		</div>
 	);
