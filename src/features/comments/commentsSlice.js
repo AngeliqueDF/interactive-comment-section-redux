@@ -201,7 +201,12 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { addComment, addReply, deleteComment, updateComment } =
-	commentsSlice.actions;
+export const {
+	incrementVote,
+	addComment,
+	addReply,
+	deleteComment,
+	updateComment,
+} = commentsSlice.actions;
 
 export default commentsSlice.reducer;
