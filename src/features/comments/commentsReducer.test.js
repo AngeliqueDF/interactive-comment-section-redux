@@ -180,4 +180,68 @@ describe("commentsReducer", () => {
 		expect(newState).toHaveLength(1);
 		expect(newState[0].content).toEqual(action.payload.newContent);
 	});
+	test("Increments the score", () => {
+		const state = [
+			{
+				id: 1,
+				content:
+					"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+				createdAt: "1 month ago",
+				score: 12,
+				user: {
+					image: {
+						png: "./images/avatars/image-amyrobson.png",
+						webp: "./images/avatars/image-amyrobson.webp",
+					},
+					username: "amyrobson",
+				},
+				replies: [],
+				replyingToUser: null,
+				replyingToComment: null,
+			},
+		];
+
+		const action = {
+			type: "comments/incrementVote",
+			payload: {
+				id: 1,
+			},
+		};
+
+		const newState = commentsReducer(state, action);
+		expect(newState[0].score).toEqual(13);
+	});
+	test("Removes an already added increment vote", () => {
+		const state = [
+			{
+				id: 1,
+				content:
+					"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+				createdAt: "1 month ago",
+				score: 13,
+				user: {
+					image: {
+						png: "./images/avatars/image-amyrobson.png",
+						webp: "./images/avatars/image-amyrobson.webp",
+					},
+					username: "amyrobson",
+				},
+				replies: [],
+				replyingToUser: null,
+				replyingToComment: null,
+				voteGiven: "increment",
+			},
+		];
+
+		const action = {
+			type: "comments/incrementVote",
+			payload: {
+				id: 1,
+			},
+		};
+
+		const newState = commentsReducer(state, action);
+		expect(newState[0].score).toEqual(12);
+		expect(newState[0].voteGiven).toEqual(undefined);
+	});
 });
