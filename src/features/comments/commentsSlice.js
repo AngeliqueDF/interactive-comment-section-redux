@@ -183,6 +183,21 @@ export const commentsSlice = createSlice({
 				commentVoted.score -= 1;
 			}
 		},
+		decrementVote: (state, action) => {
+			const commentVoted = state.find(
+				(comment) => comment.id === action.payload.id
+			);
+
+			// The user never voted for this comment OR the comment score was  previously incremented by the user
+			if (!commentVoted.voteGiven || commentVoted.voteGiven === "increment") {
+				commentVoted.score -= 1;
+				commentVoted.voteGiven = "decrement";
+			} else if (commentVoted.voteGiven === "decrement") {
+				// The comment was already decremented, cancel the decrementation and add 1 to the score to reset the value
+				delete commentVoted.voteGiven;
+				commentVoted.score += 1;
+			}
+		},
 	},
 });
 // Creates the comments array used in the store. Other slices of the state are reference by their id.
@@ -205,6 +220,7 @@ export const selectComments = (state) => {
 };
 
 export const {
+	decrementVote,
 	incrementVote,
 	addComment,
 	addReply,
