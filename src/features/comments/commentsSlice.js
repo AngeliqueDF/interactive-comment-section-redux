@@ -173,9 +173,13 @@ export const commentsSlice = createSlice({
 				(comment) => comment.id === action.payload.id
 			);
 
-			// The user never voted for this comment OR the comment score was  previously decremented by the user
-			if (!commentVoted.voteGiven || commentVoted.voteGiven === "decrement") {
+			// The user never voted for this comment
+			if (!commentVoted.voteGiven) {
 				commentVoted.score += 1;
+				commentVoted.voteGiven = "increment";
+			} else if (commentVoted.voteGiven === "decrement") {
+				// The comment score was  previously decremented by the user. First cancel the decrement, then increment by one
+				commentVoted.score += 2;
 				commentVoted.voteGiven = "increment";
 			} else if (commentVoted.voteGiven === "increment") {
 				// The comment was already incremented, cancel the incrementation and remove 1 to the score to reset the value
@@ -189,8 +193,12 @@ export const commentsSlice = createSlice({
 			);
 
 			// The user never voted for this comment OR the comment score was  previously incremented by the user
-			if (!commentVoted.voteGiven || commentVoted.voteGiven === "increment") {
+			if (!commentVoted.voteGiven) {
 				commentVoted.score -= 1;
+				commentVoted.voteGiven = "decrement";
+			} else if (commentVoted.voteGiven === "increment") {
+				// The comment score was  previously incremented by the user. First cancel the decrement, then decrement by one
+				commentVoted.score -= 2;
 				commentVoted.voteGiven = "decrement";
 			} else if (commentVoted.voteGiven === "decrement") {
 				// The comment was already decremented, cancel the decrementation and add 1 to the score to reset the value
