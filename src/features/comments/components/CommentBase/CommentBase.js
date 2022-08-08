@@ -1,5 +1,5 @@
 import Button from "../Button";
-import ScoreButtons from "../../../scoreButtons/components/ScoreButtons";
+import ScoreButtons from "../ScoreButtons";
 import CommentMeta from "../CommentMeta";
 import CommentControl from "../CommentControl";
 import CommentContent from "../CommentContent";
