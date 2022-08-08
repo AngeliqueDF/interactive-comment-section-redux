@@ -245,6 +245,40 @@ describe("commentsReducer", () => {
 		expect(newState[0].voteGiven).toEqual(undefined);
 	});
 
+	test("Increments the score by 2 when the comment was already decremented", () => {
+		const state = [
+			{
+				id: 1,
+				content:
+					"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
+				createdAt: "1 month ago",
+				score: 10,
+				user: {
+					image: {
+						png: "./images/avatars/image-amyrobson.png",
+						webp: "./images/avatars/image-amyrobson.webp",
+					},
+					username: "amyrobson",
+				},
+				replies: [],
+				replyingToUser: null,
+				replyingToComment: null,
+				voteGiven: "decrement",
+			},
+		];
+
+		const action = {
+			type: "comments/incrementVote",
+			payload: {
+				id: 1,
+			},
+		};
+
+		const newState = commentsReducer(state, action);
+		expect(newState[0].score).toEqual(12);
+		expect(newState[0].voteGiven).toEqual("increment");
+	});
+
 	test("Decrements the score", () => {
 		const state = [
 			{
