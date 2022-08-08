@@ -10,7 +10,7 @@ import DeleteCommentModal from "../DeleteCommentModal";
  * Presentational component. All comments already posted (top level comments and replies) share this base.
  */
 const CommentBase = ({
-	comment: { id, content, createdAt, score, replyingToUser, user },
+	comment: { id, content, createdAt, score, replyingToUser, user, voteGiven },
 	authorUsername,
 	updating,
 	contentArea,
@@ -30,7 +30,7 @@ const CommentBase = ({
 				id={`${authorUsername}-${id}`}
 				className={`comment${updating ? " updating" : ""}`}
 			>
-				<ScoreButtons id={id} score={score} />
+				<ScoreButtons voteGiven={voteGiven} id={id} score={score} />
 
 				<div className="comment-meta">
 					<CommentMeta authorID={user} createdAt={createdAt} />
