@@ -1,10 +1,10 @@
-import CommentBase from "./CommentBase/CommentBaseContainer";
+import CommentBaseContainer from "./CommentBase/CommentBaseContainer";
 
 const Replies = ({ replies }) => {
 	return (
 		<div className="comment-replies">
 			{replies.map((reply) => (
-				<CommentBase key={reply.id} comment={reply} />
+				<CommentBaseContainer key={reply.id} comment={reply} />
 			))}
 		</div>
 	);
@@ -13,7 +13,7 @@ const Replies = ({ replies }) => {
 const TopLevelComment = ({ comment }) => {
 	return (
 		<>
-			<CommentBase comment={comment} />
+			<CommentBaseContainer comment={comment} />
 
 			{comment.replies.length > 0 ? (
 				<Replies replies={comment.replies} />
