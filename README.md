@@ -14,6 +14,7 @@
 
 - [GitHub repository](https://github.com/AngeliqueDF/interactive-comment-section-redux)
 - [Live demo](https://jazzy-speculoos-f7da49.netlify.app/)
+- [Node.js backend (in development)](https://github.com/AngeliqueDF/interactive-comment-section-backend)
 
 ## Overview
 
@@ -28,6 +29,14 @@ _A comment section with its own backend._
 - Allows users to participate in a conversation (CRUD operations on comments).
 - Authorize certain user interactions.
 - Responsive UI.
+
+## Status
+
+The frontend is functional and works properly. However the app isn't yet connected to its `node` backend yet. Any changes on the frontend will be lost if the page is reloaded/closed.
+
+### Planned changes
+
+- [ ] Use thunks to send requests to the backend.
 
 ## Author
 
