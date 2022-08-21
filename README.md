@@ -5,9 +5,9 @@
 <div align="center">
   <img src="./src/images/logo-reactjs.svg">
   <img src="./src/images/logo-redux.svg">
-  <img style="width:48px; height: 48px" src="./src/images/logo-jestjs.svg">
-<img src="./src/images/logo-html5.svg">
-<img src="./src/images/logo-css3.svg">
+  <img width="48px" src="./src/images/logo-jestjs.svg">
+  <img src="./src/images/logo-html5.svg">
+  <img src="./src/images/logo-css3.svg">
 </div>
 
 ## Links
