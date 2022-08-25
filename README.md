@@ -1,4 +1,4 @@
-# Interactive comment section, PERN stack app
+# Interactive comment section, full stack app
 
 ![Screenshot of the Interactive comment section](./src/images/screenshot-desktop.png)
 
