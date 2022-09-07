@@ -198,6 +198,12 @@ export const commentsSlice = createSlice({
 			}
 		},
 	},
+	extraReducers: (builder) => {
+		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(addComment.fulfilled, (state, action) => {
+			state.push(action.payload.addedComment);
+		});
+	},
 });
 // Creates the comments array used in the store. Other slices of the state are reference by their id.
 export const selectComments = (state) => {
