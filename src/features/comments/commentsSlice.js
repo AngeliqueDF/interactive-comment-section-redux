@@ -58,23 +58,6 @@ export const commentsSlice = createSlice({
 	name: "comments",
 	initialState,
 	reducers: {
-		addComment: (state, action) => {
-			// if the content is empty, exit
-			if (!action.payload.content.length) return;
-
-			const newComment = {
-				...action.payload,
-				id: randomID(),
-				createdAt: new Date().getTime(),
-				score: 0,
-				replies: [],
-				replyingToUser: null,
-				content: action.payload.content,
-				replyingToComment: null,
-			};
-
-			state.push(newComment);
-		},
 		addReply: (state, action) => {
 			const trimmedContent = trimContent(
 				action.payload.replyingToAuthor,
@@ -221,7 +204,6 @@ export const selectComments = (state) => {
 export const {
 	decrementVote,
 	incrementVote,
-	addComment,
 	addReply,
 	deleteComment,
 	updateComment,
