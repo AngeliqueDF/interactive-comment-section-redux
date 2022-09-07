@@ -51,10 +51,6 @@ export const initialState = [
 	},
 ];
 
-export const fetchComments = createAsyncThunk(
-	"comments/fetchAllComments",
-	async () => {
-		// TODO fetch comments from the API
 	}
 );
 
