@@ -58,11 +58,6 @@ export const fetchComments = createAsyncThunk(
 	}
 );
 
-// TODO create thunks
-// const addComment = (second) => { third }
-// const updateComment = (second) => { third }
-// const deleteComment = (second) => { third }
-
 export const commentsSlice = createSlice({
 	name: "comments",
 	initialState,
