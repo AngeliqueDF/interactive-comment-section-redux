@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { randomID, trimContent } from "../../utils/helper";
 import service from "./../../utils/services";
 
 export const initialState = [
@@ -65,52 +64,6 @@ export const commentsSlice = createSlice({
 	name: "comments",
 	initialState,
 	reducers: {
-		addReply: (state, action) => {
-			const trimmedContent = trimContent(
-				action.payload.replyingToAuthor,
-				action.payload.content
-			);
-			// If the new comment's content only contains "@" followed by a username, it means the comment is actually empty. In that case, we stop executing the code.
-			if (!trimmedContent.length) return;
-
-			/**
-			 * Finds the root comment parent of a given comment. Needed for TopLevelComment to work correctly.
-			 */
-			const findRootComment = (id) => {
-				// Find a comment in the state by its id.
-				let currentComment = state.find((comment) => comment.id === id);
-
-				// If the current comment is a reply to another comment...
-				if (currentComment.replyingToComment != null) {
-					// ...store the other comment's id in currentComment.
-					currentComment = currentComment.replyingToComment;
-					// Then call the function again
-					return findRootComment(currentComment);
-				}
-
-				// Once we reach a comment that has null in replyingToComment, return its id.
-				return currentComment.id;
-			};
-			const rootCommentID = findRootComment(action.payload.replyingToComment);
-
-			const newComment = {
-				...action.payload,
-				id: randomID(),
-				createdAt: new Date().getTime(),
-				score: 0,
-				replies: [],
-				replyingToUser: action.payload.replyingToUser,
-				content: trimmedContent,
-				replyingToComment: action.payload.replyingToComment,
-			};
-
-			// Add the comment to the state
-			state.push(newComment);
-
-			const rootComment = state.find((comment) => comment.id === rootCommentID);
-			// Finally, to display the newly added comment, push it to the list of replies of its root parent comment.
-			rootComment.replies.push(newComment.id);
-		},
 		deleteComment: (state, action) => {
 			const deleteID = action.payload.commentID;
 			let commentToDelete = state.find((comment) => comment.id === deleteID);
@@ -214,12 +167,7 @@ export const selectComments = (state) => {
 	});
 };
 
-export const {
-	decrementVote,
-	incrementVote,
-	addReply,
-	deleteComment,
-	updateComment,
-} = commentsSlice.actions;
+export const { decrementVote, incrementVote, deleteComment, updateComment } =
+	commentsSlice.actions;
 
 export default commentsSlice.reducer;
