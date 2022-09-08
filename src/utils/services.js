@@ -20,4 +20,5 @@ const addComment = async (newComment) => {
 	return json;
 };
 
-export default { addComment };
+const services = { addComment };
+export default services;
