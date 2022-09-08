@@ -12,6 +12,7 @@ const NewReply = ({
 	replyingRef,
 	replyingToComment,
 }) => {
+	const allComments = useSelector((state) => state.comments);
 	const currentUser = useSelector(selectCurrentUser);
 	const usernames = useSelector(selectUsernames);
 	const { username: replyingToAuthor } = usernames.find(
@@ -31,12 +32,15 @@ const NewReply = ({
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const payload = {
-			content: e.target.newContent.value,
-			user: currentUser.id,
-			replyingToUser,
-			// The replyingToAuthor string is included in the payload so that we can remove it from the content saved in the state and in the database. Also avoids having duplicate '@username' string when updating the component.
-			replyingToAuthor,
-			replyingToComment,
+			newComment: {
+				content: e.target.newContent.value,
+				user: currentUser.id,
+				replyingToUser,
+				// The replyingToAuthor string is included in the payload so that we can remove it from the content saved in the state and in the database. Also avoids having duplicate '@username' string when updating the component.
+				replyingToAuthor,
+				replyingToComment,
+			},
+			allComments,
 		};
 		// Close the form when the user sent a reply
 		toggleGettingReply();
