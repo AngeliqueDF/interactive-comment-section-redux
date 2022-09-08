@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = [
 	{
-		id: 0,
+		id: 1,
 		image: {
 			png: "./images/avatars/image-amyrobson.png",
 			webp: "./images/avatars/image-amyrobson.webp",
@@ -10,7 +10,7 @@ export const initialState = [
 		username: "amyrobson",
 	},
 	{
-		id: 1,
+		id: 2,
 		image: {
 			png: "./images/avatars/image-maxblagun.png",
 			webp: "./images/avatars/image-maxblagun.webp",
@@ -18,7 +18,7 @@ export const initialState = [
 		username: "maxblagun",
 	},
 	{
-		id: 2,
+		id: 3,
 		image: {
 			png: "./images/avatars/image-ramsesmiron.png",
 			webp: "./images/avatars/image-ramsesmiron.webp",
@@ -26,7 +26,7 @@ export const initialState = [
 		username: "ramsesmiron",
 	},
 	{
-		id: 3,
+		id: 4,
 		image: {
 			png: "./images/avatars/image-juliusomo.png",
 			webp: "./images/avatars/image-juliusomo.webp",
