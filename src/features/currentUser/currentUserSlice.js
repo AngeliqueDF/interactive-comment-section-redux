@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	id: 3,
+	id: 4,
 	image: {
 		png: "./images/avatars/image-juliusomo.png",
 		webp: "./images/avatars/image-juliusomo.webp",
