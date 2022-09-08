@@ -51,6 +51,15 @@ export const initialState = [
 	},
 ];
 
+export const addReply = createAsyncThunk(
+	"comments/addReply",
+	async (newReply) => {
+		const data = await service.addReply(newReply);
+
+		return { addedReply: data };
+	}
+);
+
 export const addComment = createAsyncThunk(
 	"comments/addCommentBackend",
 	async (newComment) => {
@@ -145,6 +154,13 @@ export const commentsSlice = createSlice({
 		// Add reducers for additional action types here, and handle loading state as needed
 		builder.addCase(addComment.fulfilled, (state, action) => {
 			state.push(action.payload.addedComment);
+		});
+		builder.addCase(addReply.fulfilled, (state, action) => {
+			state.push(action.payload.addedReply);
+			const rootComment = state.find(
+				(comment) => comment.id === action.payload.addedReply.replyingToComment
+			);
+			rootComment.replies.push(action.payload.addedReply.id);
 		});
 	},
 });
