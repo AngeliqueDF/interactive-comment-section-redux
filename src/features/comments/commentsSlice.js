@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { randomID, trimContent } from "../../utils/helper";
+import service from "./../../utils/services";
 
 export const initialState = [
 	{
@@ -54,20 +55,9 @@ export const initialState = [
 export const addComment = createAsyncThunk(
 	"comments/addCommentBackend",
 	async (newComment) => {
-		const API_URL = "http://localhost:5000/api/comments/newComment";
+		const data = await service.addComment(newComment);
 
-		const response = await fetch(API_URL, {
-			method: "post",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ newComment }),
-		});
-
-		const json = await response.json();
-
-		return { addedComment: json };
+		return { addedComment: data };
 	}
 );
 
