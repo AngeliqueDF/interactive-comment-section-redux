@@ -22,6 +22,8 @@ _A comment section with its own backend._
 
 ![Under Development](https://img.shields.io/badge/under-development-orange.svg)
 
+For now, adding a reply or a comment will only work if you have the `Express` backend running. See the links section.
+
 <br />
 
 ## Features
