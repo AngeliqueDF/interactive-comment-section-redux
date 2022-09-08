@@ -20,5 +20,22 @@ const addComment = async (newComment) => {
 	return json;
 };
 
-const services = { addComment };
+const addReply = async (newReply) => {
+	const ROUTE = "/newReply";
+
+	const response = await fetch(API_URL + ROUTE, {
+		method: "post",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(newReply),
+	});
+
+	const json = await response.json();
+
+	return json;
+};
+
+const services = { addComment, addReply };
 export default services;
