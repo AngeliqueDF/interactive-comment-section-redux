@@ -1,11 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectComments } from "./../commentsSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectComments, getAllComments } from "./../commentsSlice";
 
 import TopLevelComment from "./TopLevelComment";
 
 const CommentList = () => {
 	const comments = useSelector(selectComments);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getAllComments());
+	}, []);
+
 	return (
 		<>
 			{comments &&
