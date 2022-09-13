@@ -157,6 +157,9 @@ export const commentsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(getAllComments.fulfilled, (state, action) => {
+			return (state = action.payload.comments);
+		});
 		builder.addCase(addComment.fulfilled, (state, action) => {
 			state.push(action.payload.addedComment);
 		});
