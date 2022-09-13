@@ -51,6 +51,11 @@ export const initialState = [
 	},
 ];
 
+export const getAllComments = createAsyncThunk("comments/getAll", async () => {
+	const data = await service.getAllComments();
+	return { comments: data };
+});
+
 export const addReply = createAsyncThunk(
 	"comments/addReply",
 	async (newReply) => {
@@ -152,6 +157,9 @@ export const commentsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(getAllComments.fulfilled, (state, action) => {
+			return (state = action.payload.comments);
+		});
 		builder.addCase(addComment.fulfilled, (state, action) => {
 			state.push(action.payload.addedComment);
 		});

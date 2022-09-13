@@ -1,7 +1,13 @@
 /**
  * A service to send requests to the backend.
  */
-const API_URL = "http://localhost:5000/api/comments/";
+const API_URL = process.env.API_URL || "http://localhost:5000/api/comments/";
+
+const getAllComments = async () => {
+	const response = await fetch(API_URL);
+	const json = await response.json();
+	return json;
+};
 
 const addComment = async (newComment) => {
 	const ROUTE = "/newComment";
@@ -37,5 +43,5 @@ const addReply = async (newReply) => {
 	return json;
 };
 
-const services = { addComment, addReply };
+const services = { getAllComments, addComment, addReply };
 export default services;
