@@ -9,7 +9,7 @@ const CommentList = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getAllComments());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>
