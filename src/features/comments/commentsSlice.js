@@ -51,6 +51,11 @@ export const initialState = [
 	},
 ];
 
+export const getAllComments = createAsyncThunk("comments/getAll", async () => {
+	const data = await service.getAllComments();
+	return { comments: data };
+});
+
 export const addReply = createAsyncThunk(
 	"comments/addReply",
 	async (newReply) => {
