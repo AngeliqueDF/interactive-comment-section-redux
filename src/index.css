@@ -26,6 +26,11 @@
 	--white: hsl(0, 0%, 100%);
 }
 
+/* Fix UI looking broken when there are not any comment to display yet. */
+#root {
+	width: 100vw;
+}
+
 body {
 	background-color: var(--light-gray);
 	padding: 2rem 0;
@@ -329,6 +334,10 @@ textarea {
 	.score-buttons button:active {
 		color: var(--moderate-blue);
 		opacity: 100%;
+	}
+
+	main {
+		max-width: 49%;
 	}
 
 	/* COMMENT */
