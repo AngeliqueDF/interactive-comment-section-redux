@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../currentUser/currentUserSlice";
 import { selectUserById } from "../../users/usersSlice";
-import { formatDate } from "../../../utils/helper";
 
 const CommentMeta = ({ authorID, createdAt }) => {
 	const currentUser = useSelector(selectCurrentUser);
@@ -20,8 +19,7 @@ const CommentMeta = ({ authorID, createdAt }) => {
 					<span className="own-comment-indicator">you</span>
 				) : null}
 			</p>
-			{/* TODO remove fallback value */}
-			<p className="comment-date">{formatDate(createdAt) || createdAt}</p>
+			<p className="comment-date">{createdAt}</p>
 		</>
 	);
 };

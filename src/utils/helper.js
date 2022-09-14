@@ -26,36 +26,4 @@ module.exports = {
 		const element = document.querySelector(querySelector);
 		element.selectionStart = element.value.length;
 	},
-
-	randomID: () => Number((Math.random() * 1000000).toFixed(0)),
-	/**
-	 * Trims the comment to only keep the actual content. Avoids duplicated "@username "
-	 */
-	trimContent: (username, content) => {
-		const usernameLength = username.length + 2;
-		const trimContent = content.substring(usernameLength, content.length);
-		return trimContent;
-	},
-	formatDate: (date) => {
-		const relative = new Intl.RelativeTimeFormat("en-GB", { numeric: "auto" });
-		const then = Math.floor(new Date(date));
-		const now = new Date();
-		const days = (then - now) / 86400000;
-		const getRelativeDate = (formatUnit, unitInDays = 1) =>
-			relative.format(Math.trunc(days / unitInDays), formatUnit);
-
-		if (days <= -365) {
-			console.log(relative.format(Math.trunc(days / -365), "year"));
-			return getRelativeDate("year", -365);
-		} else if (days <= -30) {
-			console.log(relative.format(Math.trunc(days / -30), "month"));
-			return getRelativeDate("month", -30);
-		} else if (days <= -7) {
-			console.log(relative.format(Math.trunc(days / -7), "week"));
-			return getRelativeDate("week", -7);
-		} else if (days > -7) {
-			console.log(relative.format(Math.trunc(days), "days"));
-			return getRelativeDate("days");
-		}
-	},
 };
