@@ -1,9 +1,16 @@
 import CommentBaseContainer from "./CommentBase/CommentBaseContainer";
 
 const Replies = ({ replies }) => {
+	const sortedReplies = replies.sort((a, b) => {
+		const date1 = new Date(a.createdAt);
+		const date2 = new Date(b.createdAt);
+
+		return date2 - date1;
+	});
+
 	return (
 		<div className="comment-replies">
-			{replies.map((reply) => (
+			{sortedReplies.map((reply) => (
 				<CommentBaseContainer key={reply.id} comment={reply} />
 			))}
 		</div>
