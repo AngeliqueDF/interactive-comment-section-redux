@@ -14,7 +14,7 @@ const CommentList = () => {
 	return (
 		<>
 			{comments &&
-				[...comments]
+				comments
 					.sort((a, b) => b.score - a.score)
 					.map((comment) => {
 						if (comment.replyingToUser === null) {
