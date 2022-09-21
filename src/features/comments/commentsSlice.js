@@ -58,8 +58,8 @@ export const getAllComments = createAsyncThunk("comments/getAll", async () => {
 
 export const addReply = createAsyncThunk(
 	"comments/addReply",
-	async (newReply) => {
-		const data = await service.addReply(newReply);
+	async (payload) => {
+		const data = await service.addReply(payload);
 
 		return { addedReply: data };
 	}
