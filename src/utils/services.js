@@ -43,7 +43,7 @@ const addComment = async (newComment) => {
 	}
 };
 
-const addReply = async (newReply) => {
+const addReply = async (payload) => {
 	const ROUTE = "/newReply";
 
 	try {
@@ -54,7 +54,7 @@ const addReply = async (newReply) => {
 				username: process.env.REACT_APP_CLIENT_ID,
 				password: process.env.REACT_APP_CLIENT_SECRET,
 			},
-			data: { newReply },
+			data: { newComment: payload.newReply, allComments: payload.allComments },
 		});
 
 		return response.data;
