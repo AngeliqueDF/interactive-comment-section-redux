@@ -54,7 +54,10 @@ const addReply = async (payload) => {
 				username: process.env.REACT_APP_CLIENT_ID,
 				password: process.env.REACT_APP_CLIENT_SECRET,
 			},
-			data: { newComment: payload.newReply, allComments: payload.allComments },
+			data: {
+				newComment: payload.newComment,
+				allComments: payload.allComments,
+			},
 		});
 
 		return response.data;
