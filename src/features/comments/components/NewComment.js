@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "./../../currentUser/currentUserSlice";
 
-import { addComment } from "../commentsSlice";
+import { addComment, selectComments } from "../commentsSlice";
 
 import Button from "./Button";
 
-const NewComment = (props) => {
+const NewComment = () => {
+	const comments = useSelector(selectComments);
 	const currentUser = useSelector(selectCurrentUser);
 	const dispatch = useDispatch();
 
@@ -15,7 +16,9 @@ const NewComment = (props) => {
 	const attributes = {
 		dataRequestType: "ADD_COMMENT",
 		formClass: "new-comment",
-		placeholder: "Add a comment…",
+		placeholder: comments.length
+			? "Add a comment…"
+			: "There are no comment yet, add the first one!",
 		btnContent: "send",
 	};
 

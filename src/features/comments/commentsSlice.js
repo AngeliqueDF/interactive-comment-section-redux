@@ -1,60 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import service from "./../../utils/services";
 
-export const initialState = [
-	{
-		id: 9990,
-		content:
-			"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
-		createdAt: "1 month ago",
-		score: 12,
-		user: 1,
-		replies: [],
-		replyingToUser: null,
-		replyingToComment: null,
-	},
-	{
-		id: 9991,
-		content:
-			"Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
-		createdAt: "2 weeks ago",
-		score: 5,
-		user: 2,
-		replies: [9992, 9993],
-		replyingToUser: null,
-		replyingToComment: null,
-		voteGiven: "increment",
-	},
-	{
-		id: 9992,
-		content:
-			"If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
-		createdAt: "1 week ago",
-		score: 4,
-		user: 3,
-		replies: [],
-		replyingToUser: 2,
-		replyingToComment: 9991,
-		voteGiven: "decrement",
-	},
-	{
-		id: 9993,
-		content:
-			"I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
-		createdAt: "2 days ago",
-		score: 2,
-		user: 4,
-		replies: [],
-		replyingToUser: 3,
-		replyingToComment: 9991,
-		voteGiven: "increment",
-	},
-];
+export const initialState = [];
 
-export const getAllComments = createAsyncThunk("comments/getAll", async () => {
-	const data = await service.getAllComments();
-	return { comments: data };
-});
+export const getAllComments = createAsyncThunk(
+	"comments/getAllComments",
+	async () => {
+		const data = await service.getAllComments();
+		return { comments: data };
+	}
+);
 
 export const addReply = createAsyncThunk(
 	"comments/addReply",
@@ -66,7 +21,7 @@ export const addReply = createAsyncThunk(
 );
 
 export const addComment = createAsyncThunk(
-	"comments/addCommentBackend",
+	"comments/addComment",
 	async (newComment) => {
 		const data = await service.addComment(newComment);
 
