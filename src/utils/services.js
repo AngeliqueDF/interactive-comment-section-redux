@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /**
  * A service to send requests to the backend.
  */
@@ -5,43 +7,63 @@ const API_URL =
 	process.env.REACT_APP_API_URL || "http://localhost:5000/api/comments/";
 
 const getAllComments = async () => {
-	const response = await fetch(API_URL);
-	const json = await response.json();
-	return json;
+	try {
+		const response = await axios({
+			url: API_URL,
+			method: "get",
+			auth: {
+				username: process.env.REACT_APP_CLIENT_ID,
+				password: process.env.REACT_APP_CLIENT_SECRET,
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 const addComment = async (newComment) => {
 	const ROUTE = "/newComment";
 
-	const response = await fetch(API_URL + ROUTE, {
-		method: "post",
-		headers: {
-			Accept: "application/json",
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ newComment }),
-	});
+	try {
+		const response = await axios({
+			url: API_URL + ROUTE,
+			method: "post",
+			auth: {
+				username: process.env.REACT_APP_CLIENT_ID,
+				password: process.env.REACT_APP_CLIENT_SECRET,
+			},
+			data: { newComment },
+		});
 
-	const json = await response.json();
-
-	return json;
+		return response.data;
+	} catch (error) {
+		console.log(error);
+	}
 };
 
-const addReply = async (newReply) => {
+const addReply = async (payload) => {
 	const ROUTE = "/newReply";
 
-	const response = await fetch(API_URL + ROUTE, {
-		method: "post",
-		headers: {
-			Accept: "application/json",
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(newReply),
-	});
+	try {
+		const response = await axios({
+			url: API_URL + ROUTE,
+			method: "post",
+			auth: {
+				username: process.env.REACT_APP_CLIENT_ID,
+				password: process.env.REACT_APP_CLIENT_SECRET,
+			},
+			data: {
+				newComment: payload.newComment,
+				allComments: payload.allComments,
+			},
+		});
 
-	const json = await response.json();
-
-	return json;
+		return response.data;
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 const services = { getAllComments, addComment, addReply };
