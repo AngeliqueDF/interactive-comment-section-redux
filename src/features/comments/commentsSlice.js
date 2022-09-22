@@ -3,10 +3,13 @@ import service from "./../../utils/services";
 
 export const initialState = [];
 
-export const getAllComments = createAsyncThunk("comments/getAll", async () => {
-	const data = await service.getAllComments();
-	return { comments: data };
-});
+export const getAllComments = createAsyncThunk(
+	"comments/getAllComments",
+	async () => {
+		const data = await service.getAllComments();
+		return { comments: data };
+	}
+);
 
 export const addReply = createAsyncThunk(
 	"comments/addReply",
@@ -18,7 +21,7 @@ export const addReply = createAsyncThunk(
 );
 
 export const addComment = createAsyncThunk(
-	"comments/addCommentBackend",
+	"comments/addComment",
 	async (newComment) => {
 		const data = await service.addComment(newComment);
 
