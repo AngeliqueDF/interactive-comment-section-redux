@@ -24,8 +24,6 @@ _A comment section with its own backend._
 
 For now, adding a reply or a comment will only work if you have the `Express` backend running. See the links section.
 
-<br />
-
 ## Features
 
 - Allows users to participate in a conversation (CRUD operations on comments).
