@@ -34,7 +34,7 @@ For now, adding a reply or a comment will only work if you have the `Express` ba
 
 ## Status
 
-The frontend is functional and works properly. However the app isn't yet connected to its `node` backend yet. Any changes on the frontend will be lost if the page is reloaded/closed.
+The frontend is functional and works properly. However the `node` backend is missing 2 routes.
 
 ### Planned changes
 
