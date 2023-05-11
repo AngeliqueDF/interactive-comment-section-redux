@@ -126,6 +126,51 @@ export const commentsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(deleteComment.fulfilled, (state, action) => {
+			const { deleteID, commentsState } = action.payload.data;
+
+			// Create a new array from the commentsState, which is actually an Immer object.
+			const allComments = commentsState.map((comment) => comment);
+
+			let commentToDelete = allComments.find(
+				(comment) => comment.id === deleteID
+			);
+
+			/**
+			 * Deleting the comment requires 2 steps : remove its reference from its parent comment, and removing it from the state.
+			 */
+
+			// 1. If the comment being deleted is a reply, it has a root parent. Therefore the current comment is reassigned to the found root parent.
+			// Firstly, check a root comment exists
+			if (!(commentToDelete.replyingToComment == null)) {
+				const findRootCommentID = (id) => {
+					let currentComment = allComments.find((comment) => comment.id === id);
+					if (currentComment.replyingToComment === null) {
+						return currentComment.id;
+					} else {
+						const currentCommentID = currentComment.replyingToComment;
+						return findRootCommentID(currentCommentID);
+					}
+				};
+				const rootCommentID = findRootCommentID(deleteID);
+
+				// Find the root comment by its id
+				const rootComment = allComments.find(
+					(comment) => comment.id === rootCommentID
+				);
+				// Stop referencing the comment being deleted
+				rootComment.replies.splice(
+					rootComment.replies.findIndex((id) => id === deleteID)
+				);
+			}
+
+			// 2. Remove the comment from state
+			const deleteIndex = allComments.findIndex(
+				(comment) => comment.id === deleteID
+			);
+			allComments.splice(deleteIndex, 1);
+			return allComments;
+		});
 		builder.addCase(getAllComments.fulfilled, (state, action) => {
 			return (state = action.payload.comments);
 		});
