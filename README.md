@@ -14,7 +14,7 @@
 
 - [GitHub repository](https://github.com/AngeliqueDF/interactive-comment-section-redux)
 - [Live demo](https://jazzy-speculoos-f7da49.netlify.app/)
-- [Node.js backend (in development)](https://github.com/AngeliqueDF/interactive-comment-section-backend)
+- [Node & Express backend](https://github.com/AngeliqueDF/interactive-comment-section-backend)
 
 ## Overview
 
