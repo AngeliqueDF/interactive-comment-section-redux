@@ -3,6 +3,20 @@ import service from "./../../utils/services";
 
 export const initialState = [];
 
+export const deleteComment = createAsyncThunk(
+	"comments/deleteComment",
+	async (payload, thunkAPI) => {
+		const data = await service.deleteComment(payload);
+
+		return {
+			data: {
+				deleteID: payload.commentID,
+				commentsState: thunkAPI.getState().comments,
+			},
+		};
+	}
+);
+
 export const getAllComments = createAsyncThunk(
 	"comments/getAllComments",
 	async () => {
