@@ -14,20 +14,16 @@
 
 - [GitHub repository](https://github.com/AngeliqueDF/interactive-comment-section-redux)
 - [Live demo](https://jazzy-speculoos-f7da49.netlify.app/)
-- [Node & Express backend](https://github.com/AngeliqueDF/interactive-comment-section-backend)
+- [Node & Express backend.](https://github.com/AngeliqueDF/interactive-comment-section-backend) If you want to use the API for your own development, make sure to setup an id and passphrase. See the backend's repo for more information.
 
 ## Overview
 
 _A comment section with its own backend._
 
-![Under Development](https://img.shields.io/badge/under-development-orange.svg)
-
-For now, adding a reply or a comment will only work if you have the `Express` backend running. See the links section.
-
 ## Features
 
-- Allows users to participate in a conversation (CRUD operations on comments).
-- Authorize certain user interactions.
+- Allows users to participate add, edit, and delete comments.
+- Voting system.
 - Responsive UI.
 
 ## Status
