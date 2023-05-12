@@ -139,6 +139,15 @@ export const commentsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(updateComment.fulfilled, (state, action) => {
+			const { updateID, newContent, commentsState } = action.payload;
+			const allComments = commentsState.map((comment) => {
+				if (comment.id === updateID) return { ...comment, content: newContent };
+				return comment;
+			});
+
+			return allComments;
+		});
 		builder.addCase(deleteComment.fulfilled, (state, action) => {
 			const { deleteID, commentsState } = action.payload.data;
 
