@@ -3,6 +3,18 @@ import service from "./../../utils/services";
 
 export const initialState = [];
 
+export const updateComment = createAsyncThunk(
+	"comments/updateComment",
+	async (payload, thunkAPI) => {
+		const data = await service.updateComment(payload);
+		return {
+			newContent: data.newContent,
+			commentsState: thunkAPI.getState().comments,
+			updateID: payload.id,
+		};
+	}
+);
+
 export const deleteComment = createAsyncThunk(
 	"comments/deleteComment",
 	async (payload, thunkAPI) => {
@@ -206,7 +218,6 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { decrementVote, incrementVote, updateComment } =
-	commentsSlice.actions;
+export const { decrementVote, incrementVote } = commentsSlice.actions;
 
 export default commentsSlice.reducer;
