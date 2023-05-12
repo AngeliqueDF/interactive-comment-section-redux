@@ -66,6 +66,27 @@ const addReply = async (payload) => {
 	}
 };
 
+const updateComment = async ({ id, newContent }) => {
+	const ROUTE = "/" + id;
+
+	try {
+		const response = await axios({
+			url: API_URL + ROUTE,
+			method: "put",
+			auth: {
+				username: process.env.REACT_APP_CLIENT_ID,
+				password: process.env.REACT_APP_CLIENT_SECRET,
+			},
+			data: {
+				newContent,
+			},
+		});
+		return response.data;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 const deleteComment = async ({ commentID }) => {
 	const ROUTE = "/" + commentID;
 
@@ -85,5 +106,11 @@ const deleteComment = async ({ commentID }) => {
 	}
 };
 
-const services = { getAllComments, addComment, addReply, deleteComment };
+const services = {
+	getAllComments,
+	addComment,
+	addReply,
+	deleteComment,
+	updateComment,
+};
 export default services;

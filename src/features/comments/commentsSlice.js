@@ -3,6 +3,18 @@ import service from "./../../utils/services";
 
 export const initialState = [];
 
+export const updateComment = createAsyncThunk(
+	"comments/updateComment",
+	async (payload, thunkAPI) => {
+		const data = await service.updateComment(payload);
+		return {
+			newContent: data.newContent,
+			commentsState: thunkAPI.getState().comments,
+			updateID: payload.id,
+		};
+	}
+);
+
 export const deleteComment = createAsyncThunk(
 	"comments/deleteComment",
 	async (payload, thunkAPI) => {
@@ -12,6 +24,7 @@ export const deleteComment = createAsyncThunk(
 			data: {
 				deleteID: payload.commentID,
 				commentsState: thunkAPI.getState().comments,
+				data,
 			},
 		};
 	}
@@ -126,6 +139,15 @@ export const commentsSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		// Add reducers for additional action types here, and handle loading state as needed
+		builder.addCase(updateComment.fulfilled, (state, action) => {
+			const { updateID, newContent, commentsState } = action.payload;
+			const allComments = commentsState.map((comment) => {
+				if (comment.id === updateID) return { ...comment, content: newContent };
+				return comment;
+			});
+
+			return allComments;
+		});
 		builder.addCase(deleteComment.fulfilled, (state, action) => {
 			const { deleteID, commentsState } = action.payload.data;
 
@@ -205,7 +227,6 @@ export const selectComments = (state) => {
 	});
 };
 
-export const { decrementVote, incrementVote, updateComment } =
-	commentsSlice.actions;
+export const { decrementVote, incrementVote } = commentsSlice.actions;
 
 export default commentsSlice.reducer;
