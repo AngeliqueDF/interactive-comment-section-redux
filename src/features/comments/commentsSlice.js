@@ -12,6 +12,7 @@ export const deleteComment = createAsyncThunk(
 			data: {
 				deleteID: payload.commentID,
 				commentsState: thunkAPI.getState().comments,
+				data,
 			},
 		};
 	}
